@@ -1,15 +1,77 @@
-## Python Script to Scan for Available Network Connection
+### Python Script to Scan and Connect to Available Network Connection
 
 import subprocess
+import platform
+import getpass
+# import os
 
-def scan():
-    cmd = "nmcli -m multiline -f ALL dev wifi"
+# Function to Scan for Available Network
+def scanAvailableNetwork():
+    if platform.system() == "Linux":
+        cmd = "nmcli -m multiline dev wifi list"
+        subprocess.call(cmd, shell=True)
+    elif platform.system() == "Windows":
+        cmd = "netsh wlan show networks"
+        subprocess.call(cmd, shell=True)
 
-    # Check for available network
-    devices = subprocess.call(cmd, shell=True)
+# Function to Create a New Network Profile/Configuration
+def createNewNetworkConn(name,SSID,key):
+    config = """<?xml version=\"1.0\"?>
+    <WLANProfile xmlns='http://www.microsoft.com/networking/WLAN/profile/v1">
+        <name>"""+name+"""</name>
+        <SSIDConfig>
+            <SSID>
+                <name>"""+SSID+"""</name>
+            </SSID>
+        </SSIDConfig>
+        <connectionType>ESS</connectionType>
+        <connectionMode>auto</connectionMode>
+        <MSM>
+            <security>
+                <authEncryption>
+                    <authentication>WPA2PSK</authentication>
+                    <encryption>AES</encryption>
+                    <useOneX>false</useOneX>
+                </authEncryption>
+                <sharedKey>
+                    <keyType>passPhrase</keyType>
+                    <protected>false</protected>
+                    <keyMaterial>"""+key+"""</keyMaterial>
+                </sharedKey>
+            </security>
+        </MSM>
+    </WLANProfile>
+    """
+    if platform.system() == "Linux":
+        cmd = "nmcli dev wifi connect '"+SSID+"' password '"+key+"'"
+    elif platform.system() == "Windows":
+        cmd = "netsh wlan add profile filename=\""+name+".xml\""+" interface=Wi-Fi"
+        with open(name+".xml", 'w') as file:
+            file.write(config)
+    subprocess.call(cmd, shell=True)
+    if platform.system() == "Windows":
+        subprocess.call("del "+name+".xml")
 
-    # Display the information
-    print(devices)
+# Function to Connect to Specific Network
+def connectToNetwork(name,SSID):
+    if platform.system() == "Linux":
+        cmd = "nmcli con up "+SSID
+    elif platform.system() == "Windows":
+        cmd = "netsh wlan connect name=\""+name+"\" ssid=\""+SSID+"\" interface=Wi-Fi"
+    subprocess.call(cmd, shell=True)
+
 
 if __name__ == '__main__' :
-    scan()
+    scanAvailableNetwork()
+
+    userInput = input("New Network (Y/N): ")
+    if userInput == "N" or userInput == "n":
+        netName = input("Network Name: ")
+        connectToNetwork(netName,netName)
+        print("If network is not recognized, try connecting with correct credentials")
+    elif userInput == "Y" or userInput == "y":
+        netName = input("Network Name: ")
+        passkey = getpass.getpass("Password: ")
+        createNewNetworkConn(netName,netName,passkey)
+        connectToNetwork(netName,netName)
+        print("If network is not recognized, try connecting with correct credentials")
