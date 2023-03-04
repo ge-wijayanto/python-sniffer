@@ -1,10 +1,10 @@
 # Python Packet Sniffer
-**Author: Gregorius Evangelist W. / 140810190040
 ### Author: Gregorius Evangelist W. / 140810190040
+---
 
 Repositori ini berisi program dan dokumentasi Packet Sniffer yang dikembangkan menggunakan bahasa Python dan ditujukan untuk digunakan pada Raspberry Pi. Diajukan oleh penulis sebagai penelitian Tugas Akhir di Teknik Informatika Unpad.
 
-### Description
+## Description
 Packet Sniffer merupakan sebuah alat (baik software maupun hardware) yang dapat digunakan untuk menangkap network packet, dalam sebuah proses yang dikenal sebagai packet capture. Penggunaan Packet Sniffer umumnya akan mengungkap packet header dan berbagai informasi lainnya yang dapat digunakan untuk mengetahui sebuah perilaku atau konfigurasi jaringan. Informasi tersebut sangat berharga untuk digunakan baik pada proses monitoring jarigan, pengujian keamanan, maupun serangan keamanan yang sesungguhnya.
 
 Pada penelitian ini, Packet Sniffer dikembangkan menggunakan bahasa Python, khususnya untuk domain socket programming, dengan utilitas berikut:
@@ -15,7 +15,7 @@ Pada penelitian ini, Packet Sniffer dikembangkan menggunakan bahasa Python, khus
 * Packet Sniffing Result Parsing
 * Packet Capture Dumping
 
-### Documentation Section
+## Documentation Section
 Untuk mempermudah navigasi repositori, gunakan button berikut:
 <p>
     <a style="margin-right: 15px;" href="https://github.com/ge-wijayanto/python-sniffer#program-design">
@@ -36,6 +36,7 @@ Untuk mempermudah navigasi repositori, gunakan button berikut:
 ((To-do: Insert Flowchart dan Program di sini))
 
 ## Installation
+Jalankan command berikut pada terminal untuk instalasi dependencies:
 ```
 git clone https://github.com/ge-wijayanto/python-sniffer
 cd python-sniffer
