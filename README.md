@@ -35,25 +35,22 @@ Untuk mempermudah navigasi repositori, gunakan button berikut:
 </p>
 
 
+
 ## Program Design
 ((To-do: Insert Flowchart dan Program di sini))
 
-
 ## Installation
-Jalankan command berikut pada terminal untuk instalasi dependencies:
-```
+```sh
 git clone https://github.com/ge-wijayanto/python-sniffer
 cd python-sniffer
 chmod +x install.sh
 ./install.sh
 ```
 
-
 ## Usage Guide
 ```
 To-do: Insert cara penggunaan program di sini
 ```
-
 
 ## Demo
 ((To-do: Insert video demonstrasi di sini))
