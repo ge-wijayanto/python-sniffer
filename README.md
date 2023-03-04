@@ -1,4 +1,5 @@
 # Python Packet Sniffer
+**Author: Gregorius Evangelist W. / 140810190040
 ### Author: Gregorius Evangelist W. / 140810190040
 
 Repositori ini berisi program dan dokumentasi Packet Sniffer yang dikembangkan menggunakan bahasa Python dan ditujukan untuk digunakan pada Raspberry Pi. Diajukan oleh penulis sebagai penelitian Tugas Akhir di Teknik Informatika Unpad.
@@ -17,8 +18,17 @@ Pada penelitian ini, Packet Sniffer dikembangkan menggunakan bahasa Python, khus
 ### Documentation Section
 Untuk mempermudah navigasi repositori, gunakan button berikut:
 <p>
+    <a style="margin-right: 15px;" href="https://github.com/ge-wijayanto/python-sniffer#program-design">
+        <img src="https://images-ext-2.discordapp.net/external/_vwOEpICdyxopjRrRwKZbtIV4Rln0b1WWrlYzh83GaI/%3Ft%3DDESIGN%26f%3DUbuntu-Bold%26ts%3D18%26tc%3Dfff%26hp%3D10%26vp%3D12%26w%3D105%26h%3D40%26c%3D12%26bgt%3Dunicolored%26bgc%3D45d27e%26be%3D1/https/dabuttonfactory.com/button.png">
+    </a>
     <a style="margin-right: 15px;" href="https://github.com/ge-wijayanto/python-sniffer#installation">
-        <img src="https://images-ext-1.discordapp.net/external/hLVJvQxDI9OcuEkje_Tc3pn92RRBpqGGi5GHCXJYT6E/%3Ft%3DInstallation%26f%3DUbuntu-Bold%26ts%3D24%26tc%3Dfff%26hp%3D30%26vp%3D20%26c%3D12%26bgt%3Dunicolored%26bgc%3D45d27e%26be%3D1/https/dabuttonfactory.com/button.png">
+        <img src="https://images-ext-2.discordapp.net/external/SRGXHDYU2YmkjYACWIaLxjR_-FZq--oykeLT4YdygCc/%3Ft%3DINSTALL%26f%3DUbuntu-Bold%26ts%3D18%26tc%3Dfff%26hp%3D10%26vp%3D12%26w%3D105%26h%3D40%26c%3D12%26bgt%3Dunicolored%26bgc%3D45d27e%26be%3D1/https/dabuttonfactory.com/button.png">
+    </a>
+    <a style="margin-right: 15px;" href="https://github.com/ge-wijayanto/python-sniffer#usage-guide">
+        <img src="https://images-ext-1.discordapp.net/external/fBTMixxR9UPwNZY_I7rdseNmVAXBwQxCrWf3v5QjFug/%3Ft%3DUSAGE%26f%3DUbuntu-Bold%26ts%3D18%26tc%3Dfff%26hp%3D10%26vp%3D12%26w%3D105%26h%3D40%26c%3D12%26bgt%3Dunicolored%26bgc%3D45d27e%26be%3D1/https/dabuttonfactory.com/button.png">
+    </a>
+    <a style="margin-right: 15px;" href="https://github.com/ge-wijayanto/python-sniffer#demo">
+        <img src="https://images-ext-1.discordapp.net/external/chF6kcQLINux4nRyKM3zfcMXTVnJALJGFp6-vGnZ3XE/%3Ft%3DDEMO%26f%3DUbuntu-Bold%26ts%3D18%26tc%3Dfff%26hp%3D10%26vp%3D12%26w%3D105%26h%3D40%26c%3D12%26bgt%3Dunicolored%26bgc%3D45d27e%26be%3D1/https/dabuttonfactory.com/button.png">
     </a>
 </p>
 
@@ -33,7 +43,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-## Usage
+## Usage Guide
 ```
 To-do: Insert cara penggunaan program di sini
 ```
