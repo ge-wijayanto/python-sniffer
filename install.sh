@@ -12,3 +12,4 @@ sudo python3 get-pip.py
 # Install dependencies
 sudo apt install net-tools
 sudo apt install sockets
+sudo apt install colorama

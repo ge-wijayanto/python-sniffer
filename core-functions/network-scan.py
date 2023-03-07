@@ -65,7 +65,7 @@ def connectToNetwork(name, SSID):
     subprocess.call(cmd, shell=True)
 
 
-if __name__ == '__main__' :
+if __name__ == '__main__':
     scanAvailableNetwork()
 
     userInput = input("New Network (Y/N): ")
