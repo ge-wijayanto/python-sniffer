@@ -41,7 +41,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 1:
         banner()
     
-    if not 'SUDO_ID' in os.environ.keys():
+    if not 'SUDO_UID' in os.environ.keys():
         print(f'\nAttention\t: {Fore.RED}Run this script with Root Privileges get the expected behavior!{Style.RESET_ALL}')
 
     inputHandler()
