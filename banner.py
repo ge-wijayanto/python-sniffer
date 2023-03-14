@@ -22,7 +22,7 @@ def description():
     print(f'  - Logging/Dumping to TXT File')
     print(f'  - Log File Entry Splitting')
     print(f'  - Sending Log Files to a Remote Server')
-    print(f'\nNote\t\t: {Fore.YELLOW}This program is intended to be used in Raspberry Pi, but might run on other systems{Style.RESET_ALL}')
+    print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Note\t\t: {Fore.YELLOW}This program is intended to be used in Raspberry Pi, but might run on other systems{Style.RESET_ALL}')
 
 def banner():
     subprocess.call('clear', shell=True)

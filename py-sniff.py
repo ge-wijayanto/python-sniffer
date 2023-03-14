@@ -32,8 +32,8 @@ def inputHandler():
                 sys.exit('\nQuitting Program.\n')
             else:
                 # subprocess.call(f'python3 run-prog.py {cmd}')
-                # subprocess.call(f'python3 core-functions/sniff-func.py', shell=True) # Placeholder
-                os.system(f'python3 ./core-functions/network-scan.py')
+                subprocess.call(f'python3 core-functions/sniff-func.py', shell=True) # Placeholder
+                # os.system(f'python3 ./core-functions/network-scan.py')
         except KeyboardInterrupt:
             sys.exit('\nKeyboardInterrupt, Terminating Program.\n')
 
@@ -42,6 +42,6 @@ if __name__ == '__main__':
         banner()
     
     if not 'SUDO_UID' in os.environ.keys():
-        print(f'\nAttention\t: {Fore.RED}Run this script with Root Privileges get the expected behavior!{Style.RESET_ALL}')
+        print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t: {Fore.RED}Run this script with Root Privileges get the expected behavior!{Style.RESET_ALL}')
 
     inputHandler()
