@@ -3,8 +3,13 @@ import struct
 import sys
 import os
 import subprocess
+import time
 import binascii
 from colorama import Style, Fore, Back
+
+def calculateRuntime(start, end):
+    # elapsed = end - start
+    print(f'\n{Fore.MAGENTA}Elapsed time: {Style.RESET_ALL}{(end - start)*1000}{Style.RESET_ALL}ms')
 
 def sniffStart():
     if not 'SUDO_UID' in os.environ.keys():
@@ -21,7 +26,9 @@ def sniffStart():
     else:
         while True:
             try:
+                start = time.time()
                 captured_packet = raw.recvfrom(65565)
+                
                 print('----------------------------------------------------')
 
                 # Ethernet Header Capture
@@ -46,6 +53,9 @@ def sniffStart():
                 # print(f'     - Header Checksum\t: {Fore.GREEN}{ip[7]}{Style.RESET_ALL}')
                 print(f'     - Source IP \t: {Fore.GREEN}{socket.inet_ntoa(ip[8])}{Style.RESET_ALL}')
                 print(f'     - Destination IP \t: {Fore.GREEN}{socket.inet_ntoa(ip[9])}{Style.RESET_ALL}')
+                
+                end = time.time()
+                calculateRuntime(start, end)
             except KeyboardInterrupt:
                 print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] {Fore.YELLOW}KeyboardInterrupt, Terminating Program.\n{Style.RESET_ALL}')
                 sys.exit()
