@@ -4,12 +4,16 @@ import sys
 import os
 import subprocess
 import time
+import tracemalloc
 import binascii
 from colorama import Style, Fore, Back
 
 def calculateRuntime(start, end):
-    # elapsed = end - start
     print(f'\n{Fore.MAGENTA}Elapsed time: {Style.RESET_ALL}{(end - start)*1000}{Style.RESET_ALL}ms')
+
+def calculateMemUsage(memory):
+    print(f'{tracemalloc.get_traced_memory()} bytes')
+    tracemalloc.stop()
 
 def sniffStart():
     if not 'SUDO_UID' in os.environ.keys():
@@ -27,6 +31,7 @@ def sniffStart():
         while True:
             try:
                 start = time.time()
+                memory = tracemalloc.start()
                 captured_packet = raw.recvfrom(65565)
                 
                 print('----------------------------------------------------')
@@ -55,12 +60,26 @@ def sniffStart():
                 print(f'     - Destination IP \t: {Fore.GREEN}{socket.inet_ntoa(ip[9])}{Style.RESET_ALL}')
                 
                 end = time.time()
+                
                 calculateRuntime(start, end)
+                calculateMemUsage(memory)
             except KeyboardInterrupt:
+                log.close()
                 print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] {Fore.YELLOW}KeyboardInterrupt, Terminating Program.\n{Style.RESET_ALL}')
                 sys.exit()
             except Exception as e:
+                log.close()
                 print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{e}{Style.RESET_ALL}')
 
 if __name__ == '__main__':
+    timestamp = time.strftime('%a, %d %b %Y %H:%M', time.localtime())
+    
+    if os.path.exists('log_files'):
+        log = open("log_files/log_" + timestamp + '.txt', 'a')
+    else:
+        subprocess.call('mkdir log_files', shell=True)
+        log = open("log_files/log_" + timestamp + '.txt', 'a')
+
     sniffStart()
+    
+    log.close()
