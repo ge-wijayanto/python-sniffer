@@ -34,6 +34,8 @@ def sniffStart():
     else:
         while True:
             try:
+                global counter
+                
                 start = time.time()
                 memory = tracemalloc.start()
                 captured_packet = raw.recvfrom(65565)
@@ -76,7 +78,6 @@ def sniffStart():
                 print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{e}{Style.RESET_ALL}')
 
 if __name__ == '__main__':
-    global counter
     counter = 1
     
     timestamp = time.strftime('%a, %d %b %Y %H:%M', time.localtime())
