@@ -46,15 +46,15 @@ def sniffStart():
                 eth_header = captured_packet[0][0:14]
                 eth = struct.unpack('!6s6s2s', eth_header)
                 print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}Ethernet Header:{Style.RESET_ALL}')
-                print(f'     - Destination MAC\t: {Fore.GREEN}{binascii.hexlify(eth[0]).upper().decode("utf-8")}{Style.RESET_ALL}')
-                print(f'     - Source MAC\t: {Fore.GREEN}{binascii.hexlify(eth[1]).upper().decode("utf-8")}{Style.RESET_ALL}')
+                print(f'     - Destination MAC\t: {Fore.GREEN}{binascii.hexlify(eth[0]).decode("utf-8").upper()}{Style.RESET_ALL}')
+                print(f'     - Source MAC\t: {Fore.GREEN}{binascii.hexlify(eth[1]).decode("utf-8").upper()}{Style.RESET_ALL}')
                 print(f'     - Type/Length\t: {Fore.GREEN}{binascii.hexlify(eth[2]).decode("utf-8")}{Style.RESET_ALL}')
 
                 # IP Header Capture
                 ip_header = captured_packet[0][14:34]
                 ip = struct.unpack('!BBHHHBBH4s4s', ip_header)
                 print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}IP Header:{Style.RESET_ALL}')
-                # print(f'     - IP Header Length (IHL)\t: {Fore.GREEN}{ip[0].decode("utf-8")}{Style.RESET_ALL}')
+                print(f'     - IP Header Length (IHL)\t: {Fore.GREEN}{ip[0]}{Style.RESET_ALL}')
                 # print(f'     - Type of Service (TOS)\t: {Fore.GREEN}{ip[1].decode("utf-8")}{Style.RESET_ALL}')
                 # print(f'     - Total Length\t: {Fore.GREEN}{ip[2]}{Style.RESET_ALL}')
                 # print(f'     - Identification\t: {Fore.GREEN}{ip[3]}{Style.RESET_ALL}')
