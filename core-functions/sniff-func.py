@@ -17,7 +17,7 @@ def calculateStats(start, end, memory, captured):
     tracemalloc.stop()
     
     # Calculate Packets Captured
-    print(f'{Fore.MAGENTA}Total Packets Captured: {Style.RESET_ALL}{captured} bytes')
+    print(f'{Fore.MAGENTA}Total Packets Captured: {Style.RESET_ALL}{captured} packets')
 
 def sniffStart():
     if not 'SUDO_UID' in os.environ.keys():
