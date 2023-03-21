@@ -18,7 +18,7 @@ def calculateStats(start, end, memory, captured):
     tracemalloc.stop()
     
     # Calculate Packets Captured
-    print(f'{Fore.MAGENTA}Total Packets Captured: {Style.RESET_ALL}{captured} packets')
+    print(f'{Fore.MAGENTA}Total Packets Captured: {Style.RESET_ALL}{captured} packets\n')
 
 def sniffStart():
     if not 'SUDO_UID' in os.environ.keys():
@@ -41,15 +41,15 @@ def sniffStart():
                 memory = tracemalloc.start()
                 captured_packet = raw.recvfrom(65565)
                 
-                print('----------------------------------------------------')
+                print('---------------------------------------------------------------------')
 
                 # Ethernet Header Capture
                 eth_header = captured_packet[0][0:14]
                 eth = struct.unpack('!6s6s2s', eth_header)
                 print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}Ethernet Header:{Style.RESET_ALL}')
-                print(f'     - Destination MAC\t: {Fore.GREEN}{binascii.hexlify(eth[0]).decode("utf-8").upper()}{Style.RESET_ALL}')
-                print(f'     - Source MAC\t: {Fore.GREEN}{binascii.hexlify(eth[1]).decode("utf-8").upper()}{Style.RESET_ALL}')
-                print(f'     - Type/Length\t: {Fore.GREEN}{binascii.hexlify(eth[2]).decode("utf-8")}{Style.RESET_ALL}')
+                print(f'     - Destination MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[0]).decode("utf-8").upper()}{Style.RESET_ALL}')
+                print(f'     - Source MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[1]).decode("utf-8").upper()}{Style.RESET_ALL}')
+                print(f'     - Type/Length\t\t: {Fore.GREEN}{binascii.hexlify(eth[2]).decode("utf-8")}{Style.RESET_ALL}')
 
                 # IP Header Capture
                 ip_header = captured_packet[0][14:34]
@@ -58,17 +58,17 @@ def sniffStart():
                 
                 split_version_IHL = BitArray(hex(ip[0]))
                 
-                print(f'     - IP Version\t: {Fore.GREEN}{split_version_IHL.bin[:4]}{Style.RESET_ALL}')
-                print(f'     - IP Header Length (IHL)\t: {Fore.GREEN}{split_version_IHL.bin[4:]}{Style.RESET_ALL}')
+                print(f'     - IP Version\t\t: {Fore.GREEN}{split_version_IHL.bin[:4]} ({int(split_version_IHL.bin[:4])}{Style.RESET_ALL}')
+                print(f'     - IP Header Length (IHL)\t: {Fore.GREEN}{split_version_IHL.bin[4:]} ({int(split_version_IHL.bin[4:])*4} bytes ({int(split_version_IHL.bin[4:])})){Style.RESET_ALL}')
                 print(f'     - Type of Service (TOS)\t: {Fore.GREEN}{ip[1]}{Style.RESET_ALL}')
-                print(f'     - Total Length\t: {Fore.GREEN}{ip[2]}{Style.RESET_ALL}')
-                print(f'     - Identification\t: {Fore.GREEN}{ip[3]}{Style.RESET_ALL}')
-                print(f'     - Fragment Offset\t: {Fore.GREEN}{ip[4]}{Style.RESET_ALL}')
+                print(f'     - Total Length\t\t: {Fore.GREEN}{ip[2]}{Style.RESET_ALL}')
+                print(f'     - Identification\t\t: {Fore.GREEN}{ip[3]}{Style.RESET_ALL}')
+                print(f'     - Fragment Offset\t\t: {Fore.GREEN}{ip[4]}{Style.RESET_ALL}')
                 print(f'     - Time-to-Live (TTL)\t: {Fore.GREEN}{ip[5]}{Style.RESET_ALL}')
-                print(f'     - Protocol\t\t: {Fore.GREEN}{ip[6]}{Style.RESET_ALL}')
-                print(f'     - Header Checksum\t: {Fore.GREEN}{ip[7]}{Style.RESET_ALL}')
-                print(f'     - Source IP \t: {Fore.GREEN}{socket.inet_ntoa(ip[8])}{Style.RESET_ALL}')
-                print(f'     - Destination IP \t: {Fore.GREEN}{socket.inet_ntoa(ip[9])}{Style.RESET_ALL}')
+                print(f'     - Protocol\t\t\t: {Fore.GREEN}{ip[6]}{Style.RESET_ALL}')
+                print(f'     - Header Checksum\t\t: {Fore.GREEN}{ip[7]}{Style.RESET_ALL}')
+                print(f'     - Source IP\t\t: {Fore.GREEN}{socket.inet_ntoa(ip[8])}{Style.RESET_ALL}')
+                print(f'     - Destination IP\t\t: {Fore.GREEN}{socket.inet_ntoa(ip[9])}{Style.RESET_ALL}')
                 
                 end = time.time()
                 
