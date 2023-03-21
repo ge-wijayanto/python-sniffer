@@ -85,6 +85,7 @@ def sniffStart():
                 print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{e}{Style.RESET_ALL}')
 
 def logger(counter, eth, ip):
+    print('\nWriting to log...\n')
     log.write('---------------------------------------------------------------------')
     log.write('Packet Number ' + str(counter) +'/n')
     
