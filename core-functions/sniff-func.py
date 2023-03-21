@@ -7,6 +7,7 @@ import time
 import tracemalloc
 import binascii
 from colorama import Style, Fore, Back
+from bitstring import BitArray
 
 def calculateStats(start, end, memory, captured):
     # Calculate Runtime
@@ -54,8 +55,11 @@ def sniffStart():
                 ip_header = captured_packet[0][14:34]
                 ip = struct.unpack('!BBHHHBBH4s4s', ip_header)
                 print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}IP Header:{Style.RESET_ALL}')
-                # print(f'     - IP Version\t: {Fore.GREEN}{ip[0]}{Style.RESET_ALL}')
-                print(f'     - IP Header Length (IHL)\t: {Fore.GREEN}{ip[0]}{Style.RESET_ALL}')
+                
+                split_version_IHL = BitArray(ip[0])
+                
+                print(f'     - IP Version\t: {Fore.GREEN}{split_version_IHL.bin[2:5]}{Style.RESET_ALL}')
+                print(f'     - IP Header Length (IHL)\t: {Fore.GREEN}{split_version_IHL.bin[5:]}{Style.RESET_ALL}')
                 print(f'     - Type of Service (TOS)\t: {Fore.GREEN}{ip[1]}{Style.RESET_ALL}')
                 print(f'     - Total Length\t: {Fore.GREEN}{ip[2]}{Style.RESET_ALL}')
                 print(f'     - Identification\t: {Fore.GREEN}{ip[3]}{Style.RESET_ALL}')
