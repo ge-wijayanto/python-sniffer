@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo apt update
+sudo apt update && sudo apt upgrade
 
 # Install the latest version of Python 3
 sudo apt install python3
