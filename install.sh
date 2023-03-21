@@ -12,5 +12,8 @@ sudo python3 get-pip.py
 # Install dependencies
 sudo apt install net-tools
 sudo apt install network-manager
-sudo apt install sockets
-sudo apt install colorama
+
+# Install modules
+sudo pip install colorama
+sudo pip install bitstring
+sudo pip install sockets
