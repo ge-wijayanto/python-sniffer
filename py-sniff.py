@@ -2,7 +2,6 @@ import subprocess
 import sys
 import os
 import readline
-# from run import *
 from banner import banner
 from colorama import Style, Fore, Back
 

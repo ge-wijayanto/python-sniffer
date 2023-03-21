@@ -1,9 +1,6 @@
-### Python Script to Scan and Connect to Available Network Connection
-
 import subprocess
 import platform
 import getpass
-# import os
 
 # Function to Scan for Available Network
 def scanAvailableNetwork():
