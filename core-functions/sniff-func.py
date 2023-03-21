@@ -72,8 +72,8 @@ def sniffStart():
                 
                 ## Logging
                 print('\nWriting to log...\n')
-                log.write('---------------------------------------------------------------------')
-                log.write('Packet Number ' + str(counter) +'/n')
+                log.write('---------------------------------------------------------------------\n')
+                log.write('Packet Number ' + str(counter) +'\n\n')
                 
                 log.write(f'[!] Ethernet Header:\n')
                 log.write(f'     - Destination MAC\t\t: {binascii.hexlify(eth[0]).decode("utf-8").upper()}\n')
