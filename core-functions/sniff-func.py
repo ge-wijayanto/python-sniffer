@@ -56,10 +56,10 @@ def sniffStart():
                 ip = struct.unpack('!BBHHHBBH4s4s', ip_header)
                 print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}IP Header:{Style.RESET_ALL}')
                 
-                split_version_IHL = BitArray(ip[0])
+                split_version_IHL = BitArray(hex=ip[0])
                 
-                print(f'     - IP Version\t: {Fore.GREEN}{split_version_IHL.bin[2:5]}{Style.RESET_ALL}')
-                print(f'     - IP Header Length (IHL)\t: {Fore.GREEN}{split_version_IHL.bin[5:]}{Style.RESET_ALL}')
+                print(f'     - IP Version\t: {Fore.GREEN}{split_version_IHL.bin[:6]}{Style.RESET_ALL}')
+                print(f'     - IP Header Length (IHL)\t: {Fore.GREEN}{split_version_IHL.bin[6:]}{Style.RESET_ALL}')
                 print(f'     - Type of Service (TOS)\t: {Fore.GREEN}{ip[1]}{Style.RESET_ALL}')
                 print(f'     - Total Length\t: {Fore.GREEN}{ip[2]}{Style.RESET_ALL}')
                 print(f'     - Identification\t: {Fore.GREEN}{ip[3]}{Style.RESET_ALL}')
