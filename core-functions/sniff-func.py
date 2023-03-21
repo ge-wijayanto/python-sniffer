@@ -76,6 +76,9 @@ def sniffStart():
                 print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{e}{Style.RESET_ALL}')
 
 if __name__ == '__main__':
+    global counter
+    counter = 1
+    
     timestamp = time.strftime('%a, %d %b %Y %H:%M', time.localtime())
     
     if os.path.exists('log_files'):
@@ -84,7 +87,6 @@ if __name__ == '__main__':
         subprocess.call('mkdir log_files', shell=True)
         log = open("log_files/log_" + timestamp + '.txt', 'a')
 
-    counter = 1
     sniffStart()
     
     log.close()
