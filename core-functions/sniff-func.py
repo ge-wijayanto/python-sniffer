@@ -20,6 +20,31 @@ def calculateStats(start, end, memory, captured):
     # Calculate Packets Captured
     print(f'{Fore.MAGENTA}Total Packets Captured: {Style.RESET_ALL}{captured} packets\n')
 
+def logger(counter, eth, ip):
+    print('\nWriting to log...\n')
+    log.write('---------------------------------------------------------------------')
+    log.write('Packet Number ' + str(counter) +'/n')
+    
+    # Ethernet Header Capture
+    log.write(f'[!] Ethernet Header:\n')
+    log.write(f'     - Destination MAC\t\t: {binascii.hexlify(eth[0]).decode("utf-8").upper()}\n')
+    log.write(f'     - Source MAC\t\t: {binascii.hexlify(eth[1]).decode("utf-8").upper()}\n')
+    log.write(f'     - Type/Length\t\t: {binascii.hexlify(eth[2]).decode("utf-8")}\n\n')
+
+    # IP Header Capture
+    log.write(f'[!] IP Header:\n')
+    log.write(f'     - IP Version\t\t: {split_version_IHL.bin[:4]} ({int(split_version_IHL.bin[:4], 2)})\n')
+    log.write(f'     - IP Header Length (IHL)\t: {split_version_IHL.bin[4:]} ({int(split_version_IHL.bin[4:], 2)*4} bytes ({int(split_version_IHL.bin[4:], 2)}))\n')
+    log.write(f'     - Type of Service (TOS)\t: {ip[1]}\n')
+    log.write(f'     - Total Length\t\t: {ip[2]}\n')
+    log.write(f'     - Identification\t\t: {ip[3]}\n')
+    log.write(f'     - Fragment Offset\t\t: {ip[4]}\n')
+    log.write(f'     - Time-to-Live (TTL)\t: {ip[5]}\n')
+    log.write(f'     - Protocol\t\t\t: {ip[6]}\n')
+    log.write(f'     - Header Checksum\t\t: {ip[7]}\n')
+    log.write(f'     - Source IP\t\t: {socket.inet_ntoa(ip[8])}\n')
+    log.write(f'     - Destination IP\t\t: {socket.inet_ntoa(ip[9])}\n\n')
+
 def sniffStart():
     if not 'SUDO_UID' in os.environ.keys():
         print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}ROOT PRIVILEGES REQUIRED!{Style.RESET_ALL}')
@@ -83,31 +108,6 @@ def sniffStart():
             except Exception as e:
                 log.close()
                 print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{e}{Style.RESET_ALL}')
-
-def logger(counter, eth, ip):
-    print('\nWriting to log...\n')
-    log.write('---------------------------------------------------------------------')
-    log.write('Packet Number ' + str(counter) +'/n')
-    
-    # Ethernet Header Capture
-    log.write(f'[!] Ethernet Header:\n')
-    log.write(f'     - Destination MAC\t\t: {binascii.hexlify(eth[0]).decode("utf-8").upper()}\n')
-    log.write(f'     - Source MAC\t\t: {binascii.hexlify(eth[1]).decode("utf-8").upper()}\n')
-    log.write(f'     - Type/Length\t\t: {binascii.hexlify(eth[2]).decode("utf-8")}\n\n')
-
-    # IP Header Capture
-    log.write(f'[!] IP Header:\n')
-    log.write(f'     - IP Version\t\t: {split_version_IHL.bin[:4]} ({int(split_version_IHL.bin[:4], 2)})\n')
-    log.write(f'     - IP Header Length (IHL)\t: {split_version_IHL.bin[4:]} ({int(split_version_IHL.bin[4:], 2)*4} bytes ({int(split_version_IHL.bin[4:], 2)}))\n')
-    log.write(f'     - Type of Service (TOS)\t: {ip[1]}\n')
-    log.write(f'     - Total Length\t\t: {ip[2]}\n')
-    log.write(f'     - Identification\t\t: {ip[3]}\n')
-    log.write(f'     - Fragment Offset\t\t: {ip[4]}\n')
-    log.write(f'     - Time-to-Live (TTL)\t: {ip[5]}\n')
-    log.write(f'     - Protocol\t\t\t: {ip[6]}\n')
-    log.write(f'     - Header Checksum\t\t: {ip[7]}\n')
-    log.write(f'     - Source IP\t\t: {socket.inet_ntoa(ip[8])}\n')
-    log.write(f'     - Destination IP\t\t: {socket.inet_ntoa(ip[9])}\n\n')
 
 if __name__ == '__main__':
     counter = 1
