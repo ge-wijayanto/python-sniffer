@@ -58,8 +58,8 @@ def sniffStart():
                 
                 split_version_IHL = BitArray(hex(ip[0]))
                 
-                print(f'     - IP Version\t: {Fore.GREEN}{split_version_IHL.bin}{Style.RESET_ALL}')
-                print(f'     - IP Header Length (IHL)\t: {Fore.GREEN}{split_version_IHL.bin}{Style.RESET_ALL}')
+                print(f'     - IP Version\t: {Fore.GREEN}{split_version_IHL.bin[:4]}{Style.RESET_ALL}')
+                print(f'     - IP Header Length (IHL)\t: {Fore.GREEN}{split_version_IHL.bin[4:]}{Style.RESET_ALL}')
                 print(f'     - Type of Service (TOS)\t: {Fore.GREEN}{ip[1]}{Style.RESET_ALL}')
                 print(f'     - Total Length\t: {Fore.GREEN}{ip[2]}{Style.RESET_ALL}')
                 print(f'     - Identification\t: {Fore.GREEN}{ip[3]}{Style.RESET_ALL}')
