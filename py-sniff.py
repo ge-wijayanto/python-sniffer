@@ -1,8 +1,9 @@
 import subprocess
 import sys
 import os
-import readline
+# import readline
 from banner import banner
+from runprog import *
 from colorama import Style, Fore, Back
 
 history_list = []
@@ -31,7 +32,7 @@ def inputHandler():
                 sys.exit('\nQuitting Program.\n')
             else:
                 # subprocess.call(f'python3 run-prog.py {cmd}')
-                subprocess.call(f'python3 core-functions/sniff-func.py', shell=True) # Placeholder
+                subprocess.call(f'python3 core_functions/network_scan.py', shell=True) # Placeholder
                 # os.system(f'python3 ./core-functions/network-scan.py')
         except KeyboardInterrupt:
             sys.exit('\nKeyboardInterrupt, Terminating Program.\n')

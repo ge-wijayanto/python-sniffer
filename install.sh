@@ -17,3 +17,4 @@ sudo apt install network-manager
 sudo pip install colorama
 sudo pip install bitstring
 sudo pip install sockets
+sudo pip install argparse

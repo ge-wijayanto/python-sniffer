@@ -2,15 +2,6 @@ import subprocess
 import platform
 import getpass
 
-# Function to Scan for Available Network
-def scanAvailableNetwork():
-    if platform.system() == "Linux":
-        cmd = "nmcli -m multiline dev wifi list"
-        subprocess.call(cmd, shell=True)
-    elif platform.system() == "Windows":
-        cmd = "netsh wlan show networks"
-        subprocess.call(cmd, shell=True)
-
 # Function to Create a New Network Profile/Configuration
 def createNewNetworkConn(name, SSID, key):
     # XML Configuration
@@ -61,10 +52,7 @@ def connectToNetwork(name, SSID):
         cmd = "netsh wlan connect name=\"" + name + "\" ssid=\"" + SSID + "\" interface=Wi-Fi"
     subprocess.call(cmd, shell=True)
 
-
 if __name__ == '__main__':
-    scanAvailableNetwork()
-
     userInput = input("New Network (Y/N): ")
     
     if userInput == "N" or userInput == "n":
