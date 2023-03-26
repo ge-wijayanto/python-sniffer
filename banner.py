@@ -24,7 +24,8 @@ def description():
     print(f'  - Sending Log Files to a Remote Server')
     print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Note\t: {Fore.YELLOW}This program is intended to be used in Raspberry Pi, but might run on other systems{Style.RESET_ALL}')
     print(f'\nInput {Fore.GREEN}"--help"{Style.RESET_ALL} or {Fore.GREEN}"-h"{Style.RESET_ALL} {Fore.CYAN}(without the quotation mark){Style.RESET_ALL} to see the list of available commands.')
-
+    print(f'Use {Fore.GREEN}"quit"{Style.RESET_ALL} to quit the program & {Fore.GREEN}"history"{Style.RESET_ALL} to see command history {Fore.CYAN}(without the quotation mark){Style.RESET_ALL}.')
+    
 def banner():
     subprocess.call('clear', shell=True)
     graphics()
