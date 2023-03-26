@@ -52,7 +52,7 @@ def connectToNetwork(name, SSID):
         cmd = "netsh wlan connect name=\"" + name + "\" ssid=\"" + SSID + "\" interface=Wi-Fi"
     subprocess.call(cmd, shell=True)
 
-if __name__ == '__main__':
+def main():
     userInput = input("New Network (Y/N): ")
     
     if userInput == "N" or userInput == "n":

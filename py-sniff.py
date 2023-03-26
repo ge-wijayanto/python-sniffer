@@ -1,7 +1,6 @@
 import subprocess
 import sys
 import os
-# import readline
 from banner import banner
 from runprog import *
 from colorama import Style, Fore, Back
@@ -31,9 +30,7 @@ def inputHandler():
             elif cmd == 'exit' or cmd == 'quit':
                 sys.exit('\nQuitting Program.\n')
             else:
-                # subprocess.call(f'python3 run-prog.py {cmd}')
-                subprocess.call(f'python3 core_functions/network_scan.py', shell=True) # Placeholder
-                # os.system(f'python3 ./core-functions/network-scan.py')
+                subprocess.call(f'python runprog.py {cmd}', shell=True)
         except KeyboardInterrupt:
             sys.exit('\nKeyboardInterrupt, Terminating Program.\n')
 

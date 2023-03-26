@@ -105,7 +105,7 @@ def sniffStart():
                 log.close()
                 print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{e}{Style.RESET_ALL}')
 
-if __name__ == '__main__':
+def main():
     counter = 1
     
     timestamp = time.strftime('%a, %d %b %Y %H:%M', time.localtime())
