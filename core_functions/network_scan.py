@@ -1,5 +1,4 @@
 import subprocess
-import getpass
 from colorama import Style, Fore, Back
 
 # Function to Scan for Available Network
