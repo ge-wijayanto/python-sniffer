@@ -20,7 +20,7 @@ def calculateStats(start, end, memory, captured):
     # Calculate Packets Captured
     print(f'{Fore.MAGENTA}Total Packets Captured: {Style.RESET_ALL}{captured} packets\n')
 
-def sniffStart():
+def sniffStart(counter, log):
     if not 'SUDO_UID' in os.environ.keys():
         print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}ROOT PRIVILEGES REQUIRED!{Style.RESET_ALL}')
         print(f'Quitting program...')
@@ -116,6 +116,6 @@ def main():
         subprocess.call('mkdir log_files', shell=True)
         log = open("log_files/log_" + timestamp + '.txt', 'a')
 
-    sniffStart()
+    sniffStart(counter, log)
     
     log.close()
