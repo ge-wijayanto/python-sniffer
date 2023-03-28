@@ -33,7 +33,6 @@ def sniffStart(log):
     except socket.error as err:
         print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{err[1]}{Style.RESET_ALL}')
     else:
-        global counter
         counter = 1
         
         while True:
