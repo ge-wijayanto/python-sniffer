@@ -1,6 +1,6 @@
 import subprocess
-import platform
 import getpass
+from colorama import Style, Fore, Back
 
 # Function to Create a New Network Profile/Configuration
 def createNewNetworkConn(name, SSID, key):
@@ -32,24 +32,12 @@ def createNewNetworkConn(name, SSID, key):
     </WLANProfile>
     """
 
-    if platform.system() == "Linux":
-        cmd = "nmcli dev wifi connect '" + SSID + "' password '" + key + "'"
-    elif platform.system() == "Windows":
-        cmd = "netsh wlan add profile filename=\"" + name + ".xml\"" + " interface=Wi-Fi"
-        with open(name+".xml", 'w') as file:
-            file.write(config)
-    
+    cmd = "nmcli dev wifi connect '" + SSID + "' password '" + key + "'"
     subprocess.call(cmd, shell=True)
-
-    if platform.system() == "Windows":
-        subprocess.call("del " + name + ".xml")
 
 # Function to Connect to Specific Network
 def connectToNetwork(name, SSID):
-    if platform.system() == "Linux":
-        cmd = "nmcli con up " + SSID
-    elif platform.system() == "Windows":
-        cmd = "netsh wlan connect name=\"" + name + "\" ssid=\"" + SSID + "\" interface=Wi-Fi"
+    cmd = "nmcli con up " + SSID
     subprocess.call(cmd, shell=True)
 
 def main():
@@ -65,3 +53,5 @@ def main():
         createNewNetworkConn(netname,netname,passkey)
         connectToNetwork(netname,netname)
         print("If network is not recognized, try connecting with correct credentials")
+    else:
+        print(f"[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}Invalid Input!{Style.RESET_ALL}")
