@@ -1,5 +1,4 @@
 import argparse
-from colorama import Style, Fore, Back
 
 import core_functions.network_scan as network_scan
 import core_functions.connect as connect
