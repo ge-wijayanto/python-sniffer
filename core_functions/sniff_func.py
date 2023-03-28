@@ -20,7 +20,7 @@ def calculateStats(start, end, memory, captured):
     # Calculate Packets Captured
     print(f'{Fore.MAGENTA}Total Packets Captured: {Style.RESET_ALL}{captured} packets\n')
 
-def sniffStart(counter, log):
+def sniffStart(log):
     if not 'SUDO_UID' in os.environ.keys():
         print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}ROOT PRIVILEGES REQUIRED!{Style.RESET_ALL}')
         print(f'Quitting program...')
@@ -33,10 +33,11 @@ def sniffStart(counter, log):
     except socket.error as err:
         print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{err[1]}{Style.RESET_ALL}')
     else:
+        global counter
+        counter = 1
+        
         while True:
             try:
-                global counter
-                
                 start = time.time()
                 memory = tracemalloc.start()
                 captured_packet = raw.recvfrom(65565)
@@ -106,8 +107,6 @@ def sniffStart(counter, log):
                 print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{e}{Style.RESET_ALL}')
 
 def main():
-    counter = 1
-    
     timestamp = time.strftime('%a, %d %b %Y %H:%M', time.localtime())
     
     if os.path.exists('log_files'):
@@ -116,6 +115,6 @@ def main():
         subprocess.call('mkdir log_files', shell=True)
         log = open("log_files/log_" + timestamp + '.txt', 'a')
 
-    sniffStart(counter, log)
+    sniffStart(log)
     
     log.close()
