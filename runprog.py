@@ -1,5 +1,3 @@
-import subprocess
-import os
 import argparse
 from colorama import Style, Fore, Back
 
