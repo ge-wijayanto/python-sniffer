@@ -46,30 +46,35 @@ def sniffStart(port):
                 
                 print('---------------------------------------------------------------------')
                 
-                # Ethernet Header Capture
                 eth_header = captured_packet[0][0:14]
                 eth = struct.unpack('!6s6s2s', eth_header)
-                getEthernetHeader(eth)
 
-                # IP Header Capture
                 ip_header = captured_packet[0][14:34]
                 ip = struct.unpack('!BBHHHBBH4s4s', ip_header)
-                getIPHeader(ip)
                 
-                ## Check IP Header Protocol Field (TCP/UDP/ICMP)
+                tcp_header = captured_packet[0][34:54]
+                tcp = struct.unpack('!HHLLBBHHH', tcp_header)
+                
+                udp_header = captured_packet[0][34:42]
+                udp = struct.unpack('!HHHH', udp_header)
+                
+                icmp_header = captured_packet[0][34:42]
+                icmp = struct.unpack('!BBHHH', icmp_header)
+                
+                ## Print
                 if ip[6] == 6 and (tcp[0] == port or tcp[1] == port):
-                    tcp_header = captured_packet[0][34:54]
-                    tcp = struct.unpack('!HHLLBBHHH', tcp_header)
+                    getEthernetHeader(eth)
+                    getIPHeader(ip)
                     getTCPHeader(tcp)
                     write_log.logger(eth, ip, tcp, filename, counter)
-                elif ip[6] == 17 and (tcp[0] == port or tcp[1] == port):
-                    udp_header = captured_packet[0][34:42]
-                    udp = struct.unpack('!HHHH', udp_header)
+                elif ip[6] == 17 and (udp[0] == port or udp[1] == port):
+                    getEthernetHeader(eth)
+                    getIPHeader(ip)
                     getUDPHeader(udp)
                     write_log.logger(eth, ip, udp, filename, counter)
-                elif ip[6] == 1 and (tcp[0] == port or tcp[1] == port):
-                    icmp_header = captured_packet[0][34:42]
-                    icmp = struct.unpack('!BBHHH', icmp_header)
+                elif ip[6] == 1 and (icmp[0] == port or icmp[1] == port):
+                    getEthernetHeader(eth)
+                    getIPHeader(ip)
                     getICMPHeader(icmp)
                     write_log.logger(eth, ip, icmp, filename, counter)
                 else:
