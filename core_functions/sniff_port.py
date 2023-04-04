@@ -8,7 +8,7 @@ import tracemalloc
 import binascii
 from colorama import Style, Fore, Back
 from bitstring import BitArray
-import core_functions.write_log as write_log
+import additional_functions.write_log as write_log
 
 def calculateStats(start, end, memory, captured):
     # Calculate Runtime
@@ -50,14 +50,15 @@ def sniffStart(port):
                 ip_header = captured_packet[0][14:34]
                 ip = struct.unpack('!BBHHHBBH4s4s', ip_header)
                 
-                tcp_header = captured_packet[0][34:54]
-                tcp = struct.unpack('!HHLLBBHHH', tcp_header)
-                
-                udp_header = captured_packet[0][34:42]
-                udp = struct.unpack('!HHHH', udp_header)
-                
-                icmp_header = captured_packet[0][34:42]
-                icmp = struct.unpack('!BBHHH', icmp_header)
+                if ip[6] == 6:
+                    tcp_header = captured_packet[0][34:54]
+                    tcp = struct.unpack('!HHLLBBHHH', tcp_header)
+                elif ip[6] == 17:    
+                    udp_header = captured_packet[0][34:42]
+                    udp = struct.unpack('!HHHH', udp_header)
+                elif ip[6] == 1:
+                    icmp_header = captured_packet[0][34:42]
+                    icmp = struct.unpack('!BBHHH', icmp_header)
                 
                 ## Print
                 if ip[6] == 6 and (tcp[0] == int(port) or tcp[1] == int(port)):
