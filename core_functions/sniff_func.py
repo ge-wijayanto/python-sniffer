@@ -218,5 +218,3 @@ def main():
         log = open("log_files/log_" + timestamp + '.txt', 'a')
 
     sniffStart(log)
-    
-    log.close()
