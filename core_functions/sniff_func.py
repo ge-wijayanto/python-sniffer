@@ -60,17 +60,17 @@ def sniffStart():
                     tcp_header = captured_packet[0][34:54]
                     tcp = struct.unpack('!HHLLBBHHH', tcp_header)
                     getTCPHeader(tcp)
-                    logger(log, eth, ip, tcp, filename)
+                    logger(eth, ip, tcp, filename)
                 elif ip[6] == 17:
                     udp_header = captured_packet[0][34:42]
                     udp = struct.unpack('!HHHH', udp_header)
                     getUDPHeader(udp)
-                    logger(log, eth, ip, udp, filename)
+                    logger(eth, ip, udp, filename)
                 elif ip[6] == 1:
                     icmp_header = captured_packet[0][34:42]
                     icmp = struct.unpack('!BBHHH', icmp_header)
                     getICMPHeader(icmp)
-                    logger(log, eth, ip, icmp, filename)
+                    logger(eth, ip, icmp, filename)
                 else:
                     print(f'[{Fore.YELLOW}!{Style.RESET_ALL}] NOTE\t\t: {Fore.YELLOW}Not using TCP/UDP/ICMP Protocol{Style.RESET_ALL}')
                     
@@ -149,7 +149,7 @@ def getICMPHeader(icmp):
     print(f'     - Identifier\t\t: {Fore.GREEN}{icmp[3]}{Style.RESET_ALL}')
     print(f'     - Sequence Number\t\t: {Fore.GREEN}{icmp[4]}{Style.RESET_ALL}')
 
-def logger(log, eth, ip, transport, filename):
+def logger(eth, ip, transport, filename):
     if os.path.exists('log_files'):
         log = open("log_files/log_" + filename + '.txt', 'a')
     else:
