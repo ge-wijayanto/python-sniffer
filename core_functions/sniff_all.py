@@ -132,14 +132,14 @@ def getTCPHeader(tcp):
     print(f'     - Window Size\t\t: {Fore.GREEN}{tcp[6]}{Style.RESET_ALL}')
     print(f'     - Checksum\t\t\t: {Fore.GREEN}{tcp[7]}{Style.RESET_ALL}')
     print(f'     - Urgent Pointer\t\t: {Fore.GREEN}{tcp[8]}{Style.RESET_ALL}')
-                    
+        
 def getUDPHeader(udp):
     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}UDP Header:{Style.RESET_ALL}')
     print(f'     - Source Port\t\t: {Fore.GREEN}{udp[0]}{Style.RESET_ALL}')
     print(f'     - Destination Port\t\t: {Fore.GREEN}{udp[1]}{Style.RESET_ALL}')
     print(f'     - Length\t\t\t: {Fore.GREEN}{udp[2]}{Style.RESET_ALL}')
     print(f'     - Checksum\t\t\t: {Fore.GREEN}{udp[3]}{Style.RESET_ALL}')
-    
+
 def getICMPHeader(icmp):
     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}ICMP Header:{Style.RESET_ALL}')
     print(f'     - Type\t\t\t: {Fore.GREEN}{icmp[0]}{Style.RESET_ALL}')
