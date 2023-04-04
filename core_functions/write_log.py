@@ -2,6 +2,7 @@ import os
 import subprocess
 import binascii
 import socket
+from bitstring import BitArray
 
 def logger(eth, ip, protocol, filename, counter):
     if os.path.exists('log_files'):
