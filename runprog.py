@@ -10,7 +10,7 @@ cmd_parser = argparse.ArgumentParser(description='py-sniff - A Python Packet Sni
 cmd_parser.add_argument('-nS', '--netscan', action='store_true', help='Scan for available networks')
 cmd_parser.add_argument('-c', '--connect', action='store_true', help='Connect to a network')
 cmd_parser.add_argument('-sA', '--sniff_all', action='store_true', help='Start packet sniffing on network (All Packets)')
-cmd_parser.add_argument('-sP', '--sniff_port', type=int, action='store_true', help='Start packet sniffing on a specific application port')
+cmd_parser.add_argument('-sP', '--sniff_port', type=int(), action='store_true', help='Start packet sniffing on a specific application port')
 
 args = vars(cmd_parser.parse_args())
 
