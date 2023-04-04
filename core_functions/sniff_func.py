@@ -76,7 +76,7 @@ def sniffStart():
                     print(f'[{Fore.YELLOW}!{Style.RESET_ALL}] NOTE\t\t: {Fore.YELLOW}Not using TCP/UDP/ICMP Protocol{Style.RESET_ALL}')
                     
                 ## Logging
-                print('\nWriting to log...\n')
+                print('\nWriting to log...')
                 
                 end = time.time()
                 

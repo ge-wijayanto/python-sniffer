@@ -55,21 +55,21 @@ def logger(eth, ip, protocol, filename, counter):
         log.write(f'          - FIN\t\t\t: {split_flags.bin[7]}\n')
         log.write(f'     - Window Size\t\t: {protocol[6]}\n')
         log.write(f'     - Checksum\t\t\t: {protocol[7]}\n')
-        log.write(f'     - Urgent Pointer\t\t: {protocol[8]}\n')
+        log.write(f'     - Urgent Pointer\t\t: {protocol[8]}\n\n')
     elif ip[6] == 17:
         log.write(f'[!] UDP Header:\n')
         log.write(f'     - Source Port\t\t: {protocol[0]}\n')
         log.write(f'     - Destination Port\t\t: {protocol[1]}\n')
         log.write(f'     - Length\t\t\t: {protocol[2]}\n')
-        log.write(f'     - Checksum\t\t\t: {protocol[3]}\n')
+        log.write(f'     - Checksum\t\t\t: {protocol[3]}\n\n')
     elif ip[6] == 1:
         log.write(f'[!] ICMP Header:\n')
         log.write(f'     - Type\t\t\t: {protocol[0]}\n')
         log.write(f'     - Code\t\t\t: {protocol[1]}\n')
         log.write(f'     - Checksum\t\t\t: {protocol[2]}\n')
         log.write(f'     - Identifier\t\t: {protocol[3]}\n')
-        log.write(f'     - Sequence Number\t\t: {protocol[4]}\n')
+        log.write(f'     - Sequence Number\t\t: {protocol[4]}\n\n')
     else:
-        log.write(f'[!] Not using TCP/UDP/ICMP Protocol\n')
+        log.write(f'[!] Not using TCP/UDP/ICMP Protocol\n\n')
     
     log.close()
