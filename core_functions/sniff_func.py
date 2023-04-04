@@ -70,6 +70,29 @@ def sniffStart(log):
                 print(f'     - Source IP\t\t: {Fore.GREEN}{socket.inet_ntoa(ip[8])}{Style.RESET_ALL}')
                 print(f'     - Destination IP\t\t: {Fore.GREEN}{socket.inet_ntoa(ip[9])}{Style.RESET_ALL}')
                 
+                ## Transport Header
+                if ip[6] == 6:
+                    tcp_header = captured_packet[0][34:54]
+                    tcp = struct.unpack('!HHLLBBHHH', tcp_header)
+                    print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}TCP Header:{Style.RESET_ALL}')
+                    print(f'     - Source Port\t\t: {Fore.GREEN}{tcp[0]}{Style.RESET_ALL}')
+                    print(f'     - Destination Port\t\t: {Fore.GREEN}{tcp[1]}{Style.RESET_ALL}')
+                    print(f'     - Sequence Number\t\t: {Fore.GREEN}{tcp[2]}{Style.RESET_ALL}')
+                    print(f'     - Acknowledgement Number\t: {Fore.GREEN}{tcp[3]}{Style.RESET_ALL}')
+                    print(f'     - Header Length\t\t: {Fore.GREEN}{tcp[4]}{Style.RESET_ALL}')
+                    print(f'     - Flags\t\t\t: {Fore.GREEN}{tcp[5]}{Style.RESET_ALL}')
+                    print(f'     - Window Size\t\t: {Fore.GREEN}{tcp[6]}{Style.RESET_ALL}')
+                    print(f'     - Checksum\t\t: {Fore.GREEN}{tcp[7]}{Style.RESET_ALL}')
+                    print(f'     - Urgent Pointer\t\t: {Fore.GREEN}{tcp[8]}{Style.RESET_ALL}')
+                elif ip[6] == 17:
+                    udp_header = captured_packet[0][34:42]
+                    udp = struct.unpack('!HHHH', udp_header)
+                    print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}UDP Header:{Style.RESET_ALL}')
+                    print(f'     - Source Port\t\t: {Fore.GREEN}{udp[0]}{Style.RESET_ALL}')
+                    print(f'     - Destination Port\t\t: {Fore.GREEN}{udp[1]}{Style.RESET_ALL}')
+                    print(f'     - Length\t\t: {Fore.GREEN}{udp[2]}{Style.RESET_ALL}')
+                    print(f'     - Checksum\t\t: {Fore.GREEN}{udp[3]}{Style.RESET_ALL}')
+                
                 ## Logging
                 print('\nWriting to log...\n')
                 log.write('---------------------------------------------------------------------\n')
