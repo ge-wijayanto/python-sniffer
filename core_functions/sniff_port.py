@@ -60,7 +60,7 @@ def sniffStart(port):
                 icmp = struct.unpack('!BBHHH', icmp_header)
                 
                 ## Print
-                if ip[6] == 6 and (int(tcp[0]) == port or int(tcp[1]) == port):
+                if ip[6] == 6 and (tcp[0] == port or tcp[1] == port):
                     getEthernetHeader(eth)
                     getIPHeader(ip)
                     getTCPHeader(tcp)
@@ -70,7 +70,7 @@ def sniffStart(port):
                     end = time.time()
                     calculateStats(start, end, memory, counter)
                     counter += 1
-                elif ip[6] == 17 and (int(udp[0]) == port or int(udp[1]) == port):
+                elif ip[6] == 17 and (udp[0] == port or udp[1] == port):
                     getEthernetHeader(eth)
                     getIPHeader(ip)
                     getUDPHeader(udp)
