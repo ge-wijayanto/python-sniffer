@@ -165,6 +165,7 @@ def logger(eth, ip, transport, filename, counter):
     log.write(f'     - Type/Length\t\t: {binascii.hexlify(eth[2]).decode("utf-8")}\n\n')
 
     log.write(f'[!] IP Header:\n')
+    split_version_IHL = BitArray(hex(ip[0]))
     log.write(f'     - IP Version\t\t: {split_version_IHL.bin[:4]} ({int(split_version_IHL.bin[:4], 2)})\n')
     log.write(f'     - IP Header Length (IHL)\t: {split_version_IHL.bin[4:]} ({int(split_version_IHL.bin[4:], 2)*4} bytes ({int(split_version_IHL.bin[4:], 2)}))\n')
     log.write(f'     - Type of Service (TOS)\t: {ip[1]}\n')
