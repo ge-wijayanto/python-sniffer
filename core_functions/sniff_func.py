@@ -82,7 +82,7 @@ def sniffStart(log):
                     print(f'     - Header Length\t\t: {Fore.GREEN}{tcp[4]}{Style.RESET_ALL}')
                     print(f'     - Flags\t\t\t: {Fore.GREEN}{tcp[5]}{Style.RESET_ALL}')
                     print(f'     - Window Size\t\t: {Fore.GREEN}{tcp[6]}{Style.RESET_ALL}')
-                    print(f'     - Checksum\t\t: {Fore.GREEN}{tcp[7]}{Style.RESET_ALL}')
+                    print(f'     - Checksum\t\t\t: {Fore.GREEN}{tcp[7]}{Style.RESET_ALL}')
                     print(f'     - Urgent Pointer\t\t: {Fore.GREEN}{tcp[8]}{Style.RESET_ALL}')
                 elif ip[6] == 17:
                     udp_header = captured_packet[0][34:42]
@@ -96,9 +96,9 @@ def sniffStart(log):
                     icmp_header = captured_packet[0][34:42]
                     icmp = struct.unpack('!BBHHH', icmp_header)
                     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}ICMP Header:{Style.RESET_ALL}')
-                    print(f'     - Type\t\t: {Fore.GREEN}{icmp[0]}{Style.RESET_ALL}')
-                    print(f'     - Code\t\t: {Fore.GREEN}{icmp[1]}{Style.RESET_ALL}')
-                    print(f'     - Checksum\t\t: {Fore.GREEN}{icmp[2]}{Style.RESET_ALL}')
+                    print(f'     - Type\t\t\t: {Fore.GREEN}{icmp[0]}{Style.RESET_ALL}')
+                    print(f'     - Code\t\t\t: {Fore.GREEN}{icmp[1]}{Style.RESET_ALL}')
+                    print(f'     - Checksum\t\t\t: {Fore.GREEN}{icmp[2]}{Style.RESET_ALL}')
                     print(f'     - Identifier\t\t: {Fore.GREEN}{icmp[3]}{Style.RESET_ALL}')
                     print(f'     - Sequence Number\t\t: {Fore.GREEN}{icmp[4]}{Style.RESET_ALL}')
                 else:
