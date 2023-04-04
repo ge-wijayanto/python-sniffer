@@ -21,7 +21,7 @@ def calculateStats(start, end, memory, captured):
     # Calculate Packets Captured
     print(f'{Fore.MAGENTA}Total Packets Captured: {Style.RESET_ALL}{captured} packets\n')
 
-def sniffStart():
+def sniffStart(port):
     if not 'SUDO_UID' in os.environ.keys():
         print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}ROOT PRIVILEGES REQUIRED!{Style.RESET_ALL}')
         print(f'Quitting program...')
@@ -60,7 +60,7 @@ def sniffStart():
                 icmp = struct.unpack('!BBHHH', icmp_header)
                 
                 ## Print
-                if ip[6] == 6 and (tcp[0] == 443 or tcp[1] == 443):
+                if ip[6] == 6 and (tcp[0] == int(port) or tcp[1] == int(port)):
                     getEthernetHeader(eth)
                     getIPHeader(ip)
                     getTCPHeader(tcp)
@@ -70,21 +70,11 @@ def sniffStart():
                     end = time.time()
                     calculateStats(start, end, memory, counter)
                     counter += 1
-                elif ip[6] == 17 and (udp[0] == 443 or udp[1] == 443):
+                elif ip[6] == 17 and (udp[0] == int(port) or udp[1] == int(port)):
                     getEthernetHeader(eth)
                     getIPHeader(ip)
                     getUDPHeader(udp)
                     write_log.logger(eth, ip, udp, filename, counter)
-                    
-                    print('\nWriting to log...')
-                    end = time.time()
-                    calculateStats(start, end, memory, counter)
-                    counter += 1
-                elif ip[6] == 1:
-                    getEthernetHeader(eth)
-                    getIPHeader(ip)
-                    getICMPHeader(icmp)
-                    write_log.logger(eth, ip, icmp, filename, counter)
                     
                     print('\nWriting to log...')
                     end = time.time()
@@ -161,8 +151,8 @@ def getICMPHeader(icmp):
     print(f'     - Sequence Number\t\t: {Fore.GREEN}{icmp[4]}{Style.RESET_ALL}')
 
 def main():
-    # port = input("Input Port Filter : ")
-    # print(f'Starting scan on port : {Fore.CYAN}{port}{Style.RESET_ALL}')
+    port = input(f'{Fore.GREEN}INPUT PORT FILTER : {Style.RESET_ALL}')
+    print(f'Starting scan on port : {Fore.CYAN}{port}{Style.RESET_ALL}')
     
-    sniffStart()
+    sniffStart(port)
     log.close()
