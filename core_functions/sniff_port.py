@@ -148,7 +148,8 @@ def getICMPHeader(icmp):
     print(f'     - Identifier\t\t: {Fore.GREEN}{icmp[3]}{Style.RESET_ALL}')
     print(f'     - Sequence Number\t\t: {Fore.GREEN}{icmp[4]}{Style.RESET_ALL}')
 
-def main(port):
+def main():
+    port = input("Input Port Filter : ")
     print(f'Starting scan on port : {Fore.CYAN}{port}{Style.RESET_ALL}')
     
     sniffStart(port)
