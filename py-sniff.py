@@ -30,7 +30,7 @@ def inputHandler():
             elif cmd == 'exit' or cmd == 'quit':
                 sys.exit('\nQuitting Program.\n')
             else:
-                subprocess.call(f'sudo python3 runprog.py {cmd}', shell=True)
+                subprocess.call(f'python3 runprog.py {cmd}', shell=True)
         except KeyboardInterrupt:
             sys.exit('\nKeyboardInterrupt, Terminating Program.\n')
 
