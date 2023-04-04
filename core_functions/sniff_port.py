@@ -44,8 +44,6 @@ def sniffStart(port):
                 memory = tracemalloc.start()
                 captured_packet = raw.recvfrom(65565)
                 
-                print('---------------------------------------------------------------------')
-                
                 eth_header = captured_packet[0][0:14]
                 eth = struct.unpack('!6s6s2s', eth_header)
 
@@ -101,6 +99,8 @@ def sniffStart(port):
                 print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{e}{Style.RESET_ALL}')
 
 def getEthernetHeader(eth):
+    print('---------------------------------------------------------------------')
+    
     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}Ethernet Header:{Style.RESET_ALL}')
     print(f'     - Destination MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[0]).decode("utf-8").upper()}{Style.RESET_ALL}')
     print(f'     - Source MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[1]).decode("utf-8").upper()}{Style.RESET_ALL}')
