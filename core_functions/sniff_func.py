@@ -20,7 +20,7 @@ def calculateStats(start, end, memory, captured):
     # Calculate Packets Captured
     print(f'{Fore.MAGENTA}Total Packets Captured: {Style.RESET_ALL}{captured} packets\n')
 
-def sniffStart(filename):
+def sniffStart():
     if not 'SUDO_UID' in os.environ.keys():
         print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}ROOT PRIVILEGES REQUIRED!{Style.RESET_ALL}')
         print(f'Quitting program...')
@@ -34,12 +34,8 @@ def sniffStart(filename):
         print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{err[1]}{Style.RESET_ALL}')
     else:
         counter = 1
-        
-        if os.path.exists('log_files'):
-            log = open("log_files/log_" + filename + '.txt', 'a')
-        else:
-            subprocess.call('mkdir log_files', shell=True)
-            log = open("log_files/log_" + filename + '.txt', 'a')
+        timestamp = time.strftime('%a, %d %b %Y %H:%M', time.localtime())
+        filename = timestamp
         
         while True:
             try:
@@ -64,17 +60,17 @@ def sniffStart(filename):
                     tcp_header = captured_packet[0][34:54]
                     tcp = struct.unpack('!HHLLBBHHH', tcp_header)
                     getTCPHeader(tcp)
-                    logger(log, eth, ip, tcp)
+                    logger(log, eth, ip, tcp, filename)
                 elif ip[6] == 17:
                     udp_header = captured_packet[0][34:42]
                     udp = struct.unpack('!HHHH', udp_header)
                     getUDPHeader(udp)
-                    logger(log, eth, ip, udp)
+                    logger(log, eth, ip, udp, filename)
                 elif ip[6] == 1:
                     icmp_header = captured_packet[0][34:42]
                     icmp = struct.unpack('!BBHHH', icmp_header)
                     getICMPHeader(icmp)
-                    logger(log, eth, ip, icmp)
+                    logger(log, eth, ip, icmp, filename)
                 else:
                     print(f'[{Fore.YELLOW}!{Style.RESET_ALL}] NOTE\t\t: {Fore.YELLOW}Not using TCP/UDP/ICMP Protocol{Style.RESET_ALL}')
                     
@@ -153,7 +149,13 @@ def getICMPHeader(icmp):
     print(f'     - Identifier\t\t: {Fore.GREEN}{icmp[3]}{Style.RESET_ALL}')
     print(f'     - Sequence Number\t\t: {Fore.GREEN}{icmp[4]}{Style.RESET_ALL}')
 
-def logger(log, eth, ip, transport):
+def logger(log, eth, ip, transport, filename):
+    if os.path.exists('log_files'):
+        log = open("log_files/log_" + filename + '.txt', 'a')
+    else:
+        subprocess.call('mkdir log_files', shell=True)
+        log = open("log_files/log_" + filename + '.txt', 'a')
+        
     log.write('---------------------------------------------------------------------\n')
     log.write('Packet Number ' + str(counter) +'\n\n')
 
@@ -213,11 +215,9 @@ def logger(log, eth, ip, transport):
         log.write(f'     - Sequence Number\t\t: {icmp[4]}\n')
     else:
         log.write(f'[!] Not using TCP/UDP/ICMP Protocol\n')
+    
+    log.close()
 
 def main():
-    timestamp = time.strftime('%a, %d %b %Y %H:%M', time.localtime())
-    filename = timestamp
-
-    sniffStart(filename)
-    
+    sniffStart()
     log.close()
