@@ -8,7 +8,7 @@ import tracemalloc
 import binascii
 from colorama import Style, Fore, Back
 from bitstring import BitArray
-from write_log import *
+import core_functions.write_log as write_log
 
 def calculateStats(start, end, memory, captured):
     # Calculate Runtime
