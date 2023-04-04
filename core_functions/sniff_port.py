@@ -38,6 +38,7 @@ def sniffStart(port):
         timestamp = time.strftime('%a, %d %b %Y %H:%M', time.localtime())
         filename = timestamp
         port = struct.pack('!H', port)
+        short(port)
         
         while True:
             try:
