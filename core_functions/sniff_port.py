@@ -37,6 +37,7 @@ def sniffStart(port):
         counter = 1
         timestamp = time.strftime('%a, %d %b %Y %H:%M', time.localtime())
         filename = timestamp
+        port = struct.pack('!H', port)
         
         while True:
             try:
@@ -80,7 +81,7 @@ def sniffStart(port):
                     end = time.time()
                     calculateStats(start, end, memory, counter)
                     counter += 1
-                elif ip[6] == 1 and (icmp[0] == port or icmp[1] == port):
+                elif ip[6] == 1:
                     getEthernetHeader(eth)
                     getIPHeader(ip)
                     getICMPHeader(icmp)
