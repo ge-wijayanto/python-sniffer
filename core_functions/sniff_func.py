@@ -92,7 +92,18 @@ def sniffStart(log):
                     print(f'     - Destination Port\t\t: {Fore.GREEN}{udp[1]}{Style.RESET_ALL}')
                     print(f'     - Length\t\t: {Fore.GREEN}{udp[2]}{Style.RESET_ALL}')
                     print(f'     - Checksum\t\t: {Fore.GREEN}{udp[3]}{Style.RESET_ALL}')
-                
+                elif ip[6] == 1:
+                    icmp_header = captured_packet[0][34:42]
+                    icmp = struct.unpack('!BBHHH', icmp_header)
+                    print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}ICMP Header:{Style.RESET_ALL}')
+                    print(f'     - Type\t\t: {Fore.GREEN}{icmp[0]}{Style.RESET_ALL}')
+                    print(f'     - Code\t\t: {Fore.GREEN}{icmp[1]}{Style.RESET_ALL}')
+                    print(f'     - Checksum\t\t: {Fore.GREEN}{icmp[2]}{Style.RESET_ALL}')
+                    print(f'     - Identifier\t\t: {Fore.GREEN}{icmp[3]}{Style.RESET_ALL}')
+                    print(f'     - Sequence Number\t\t: {Fore.GREEN}{icmp[4]}{Style.RESET_ALL}')
+                else:
+                    continue
+                    
                 ## Logging
                 print('\nWriting to log...\n')
                 log.write('---------------------------------------------------------------------\n')
