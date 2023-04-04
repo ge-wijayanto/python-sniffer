@@ -67,26 +67,33 @@ def sniffStart(port):
                     getIPHeader(ip)
                     getTCPHeader(tcp)
                     write_log.logger(eth, ip, tcp, filename, counter)
+                    
+                    print('\nWriting to log...')
+                    end = time.time()
+                    calculateStats(start, end, memory, counter)
+                    counter += 1
                 elif ip[6] == 17 and (udp[0] == port or udp[1] == port):
                     getEthernetHeader(eth)
                     getIPHeader(ip)
                     getUDPHeader(udp)
                     write_log.logger(eth, ip, udp, filename, counter)
+                    
+                    print('\nWriting to log...')
+                    end = time.time()
+                    calculateStats(start, end, memory, counter)
+                    counter += 1
                 elif ip[6] == 1 and (icmp[0] == port or icmp[1] == port):
                     getEthernetHeader(eth)
                     getIPHeader(ip)
                     getICMPHeader(icmp)
                     write_log.logger(eth, ip, icmp, filename, counter)
-                else:
-                    print(f'[{Fore.YELLOW}!{Style.RESET_ALL}] NOTE\t\t: {Fore.YELLOW}Not using TCP/UDP/ICMP Protocol{Style.RESET_ALL}')
                     
-                ## Logging
-                print('\nWriting to log...')
-                
-                end = time.time()
-                
-                calculateStats(start, end, memory, counter)
-                counter += 1
+                    print('\nWriting to log...')
+                    end = time.time()
+                    calculateStats(start, end, memory, counter)
+                    counter += 1
+                else:
+                    continue
             except KeyboardInterrupt:
                 print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] {Fore.YELLOW}KeyboardInterrupt, Terminating Program.\n{Style.RESET_ALL}')
                 sys.exit()
