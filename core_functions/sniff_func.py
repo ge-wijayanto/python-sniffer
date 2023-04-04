@@ -20,7 +20,7 @@ def calculateStats(start, end, memory, captured):
     # Calculate Packets Captured
     print(f'{Fore.MAGENTA}Total Packets Captured: {Style.RESET_ALL}{captured} packets\n')
 
-def sniffStart(log):
+def sniffStart(filename):
     if not 'SUDO_UID' in os.environ.keys():
         print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}ROOT PRIVILEGES REQUIRED!{Style.RESET_ALL}')
         print(f'Quitting program...')
@@ -34,6 +34,12 @@ def sniffStart(log):
         print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}{err[1]}{Style.RESET_ALL}')
     else:
         counter = 1
+        
+        if os.path.exists('log_files'):
+            log = open("log_files/log_" + filename + '.txt', 'a')
+        else:
+            subprocess.call('mkdir log_files', shell=True)
+            log = open("log_files/log_" + filename + '.txt', 'a')
         
         while True:
             try:
@@ -210,11 +216,8 @@ def logger(log, eth, ip, transport):
 
 def main():
     timestamp = time.strftime('%a, %d %b %Y %H:%M', time.localtime())
-    
-    if os.path.exists('log_files'):
-        log = open("log_files/log_" + timestamp + '.txt', 'a')
-    else:
-        subprocess.call('mkdir log_files', shell=True)
-        log = open("log_files/log_" + timestamp + '.txt', 'a')
+    filename = timestamp
 
-    sniffStart(log)
+    sniffStart(filename)
+    
+    log.close()
