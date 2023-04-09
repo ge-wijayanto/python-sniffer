@@ -53,18 +53,28 @@ def sniffStart(port):
                 if ip[6] == 6:
                     tcp_header = captured_packet[0][34:54]
                     tcp = struct.unpack('!HHLLBBHHH', tcp_header)
+                    
+                    data_content = captured_packet[0][54:]
+                    data = struct.unpack('!%ds' % len(data_content), data_content)
                 elif ip[6] == 17:    
                     udp_header = captured_packet[0][34:42]
                     udp = struct.unpack('!HHHH', udp_header)
+                    
+                    data_content = captured_packet[0][42:]
+                    data = struct.unpack('!%ds' % len(data_content), data_content)
                 elif ip[6] == 1:
                     icmp_header = captured_packet[0][34:42]
                     icmp = struct.unpack('!BBHHH', icmp_header)
+                    
+                    data_content = captured_packet[0][42:]
+                    data = struct.unpack('!%ds' % len(data_content), data_content)
                 
                 ## Print
                 if ip[6] == 6 and (tcp[0] == int(port) or tcp[1] == int(port)):
                     getEthernetHeader(eth)
                     getIPHeader(ip)
                     getTCPHeader(tcp)
+                    getData(data)
                     write_log.logger(eth, ip, tcp, filename, counter)
                     
                     print('\nWriting to log...')
@@ -75,6 +85,7 @@ def sniffStart(port):
                     getEthernetHeader(eth)
                     getIPHeader(ip)
                     getUDPHeader(udp)
+                    getData(data)
                     write_log.logger(eth, ip, udp, filename, counter)
                     
                     print('\nWriting to log...')
@@ -151,6 +162,10 @@ def getICMPHeader(icmp):
     print(f'     - Identifier\t\t: {Fore.GREEN}{icmp[3]}{Style.RESET_ALL}')
     print(f'     - Sequence Number\t\t: {Fore.GREEN}{icmp[4]}{Style.RESET_ALL}')
 
+def getData(data):
+    print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}Data:{Style.RESET_ALL}')
+    print(f'     - Data\t\t\t: {Fore.GREEN}{data}{Style.RESET_ALL}')
+    
 def main():
     port = input(f'{Fore.GREEN}INPUT PORT FILTER : {Style.RESET_ALL}')
     print(f'Starting scan on port : {Fore.CYAN}{port}{Style.RESET_ALL}')
