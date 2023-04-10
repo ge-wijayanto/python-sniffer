@@ -19,9 +19,10 @@ def getIPHeader(ip):
     print(f'     - Dest. IP\t\t: {Fore.GREEN}{socket.inet_ntoa(ip[9])}{Style.RESET_ALL}')
     
 def getTCPHeader(tcp):
+    split_HL_flags = BitArray(hex(tcp[4]))
     split_flags = BitArray(hex(tcp[5]))
     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}TCP Header:{Style.RESET_ALL}')
-    print(f'     - Src. Port\t\t: {Fore.GREEN}{tcp[0]}{Style.RESET_ALL}')
+    print(f'     - Src. Port\t: {Fore.GREEN}{tcp[0]}{Style.RESET_ALL}')
     print(f'     - Dest. Port\t: {Fore.GREEN}{tcp[1]}{Style.RESET_ALL}')
     print(f'     - Flags\t\t: {Fore.GREEN}{split_HL_flags[4:] + split_flags[0:]}{Style.RESET_ALL}')
     print('         |---> URG: {3}{0}{4}, ACK: {3}{1}{4}, PSH: {3}{2}{4}'
@@ -45,7 +46,7 @@ def getTCPHeader(tcp):
         
 def getUDPHeader(udp):
     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}UDP Header:{Style.RESET_ALL}')
-    print(f'     - Src. Port\t\t: {Fore.GREEN}{udp[0]}{Style.RESET_ALL}')
+    print(f'     - Src. Port\t: {Fore.GREEN}{udp[0]}{Style.RESET_ALL}')
     print(f'     - Dest. Port\t: {Fore.GREEN}{udp[1]}{Style.RESET_ALL}')
 
 def getICMPHeader(icmp):
