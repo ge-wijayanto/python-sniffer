@@ -69,7 +69,7 @@ def logger(eth, ip, protocol, data, filename, counter):
         log.write(f'     - Type\t\t\t\t: {protocol[0]}\n')
         log.write(f'     - Code\t\t\t\t: {protocol[1]}\n')
         log.write(f'     - Checksum\t\t\t: {hex(protocol[2])}\n')
-        log.write(f'     - Identifier\t\t: {protocol[3]}\n')
+        log.write(f'     - Identifier\t\t\t: {protocol[3]}\n')
         log.write(f'     - Sequence Number\t\t: {protocol[4]}\n\n')
     else:
         log.write(f'[!] Not using TCP/UDP/ICMP Protocol\n\n')

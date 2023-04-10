@@ -12,8 +12,6 @@ import additional_functions.write_log as write_log
 import additional_functions.stats_calculator as stats_calc
 import additional_functions.console_logger as console_log
 
-# def initialize():
-
 def sniffAll():
     try:
         raw = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.htons(0x800))
@@ -177,7 +175,7 @@ def sniffPort(port):
     
 def main():
     if not 'SUDO_UID' in os.environ.keys():
-        print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}ROOT PRIVILEGES REQUIRED!{Style.RESET_ALL}')
+        print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t: {Fore.RED}ROOT PRIVILEGES REQUIRED!{Style.RESET_ALL}')
         print(f'Quitting program...')
         sys.exit()
     else:
