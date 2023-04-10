@@ -11,8 +11,8 @@ def getEthernetHeader(eth):
     # print(f'     - Source MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[1]).decode("utf-8").upper()}{Style.RESET_ALL}')
     # print(f'     - Type/Length\t\t: {Fore.GREEN}{binascii.hexlify(eth[2]).decode("utf-8")}{Style.RESET_ALL}')
     print(f'     Src. MAC : {Fore.GREEN}{src}{Style.RESET_ALL}, Dest. MAC : {Fore.GREEN}{dest}{Style.RESET_ALL}'.format(
-        dest=binascii.hexlify(eth[0]).decode("utf-8").upper(),
-        src=binascii.hexlify(eth[1]).decode("utf-8").upper()
+        src=binascii.hexlify(eth[1]).decode("utf-8").upper(),
+        dest=binascii.hexlify(eth[0]).decode("utf-8").upper()
         ))
     
 def getIPHeader(ip):
@@ -36,9 +36,9 @@ def getIPHeader(ip):
         ver_dec=int(split_version_IHL.bin[:4], 2), 
         proto=ip[6]
         ))
-    print(f'     Src. IP : {Fore.GREEN}{dest}{Style.RESET_ALL}, Dest. IP : {Fore.GREEN}{src}{Style.RESET_ALL}'.format(
-        dest=socket.inet_ntoa(ip[9]),
-        src=socket.inet_ntoa(ip[8])
+    print(f'     Src. IP : {Fore.GREEN}{src}{Style.RESET_ALL}, Dest. IP : {Fore.GREEN}{dest}{Style.RESET_ALL}'.format(
+        src=socket.inet_ntoa(ip[8]),
+        dest=socket.inet_ntoa(ip[9])
         ))
     
 def getTCPHeader(tcp):
@@ -65,8 +65,8 @@ def getTCPHeader(tcp):
     # print(f'     - Checksum\t\t\t: {Fore.GREEN}{hex(tcp[7])}{Style.RESET_ALL}')
     # print(f'     - Urgent Pointer\t\t: {Fore.GREEN}{tcp[8]}{Style.RESET_ALL}')
     print(f'     Src. Port : {Fore.GREEN}{src}{Style.RESET_ALL}, Dest. Port : {Fore.GREEN}{dest}{Style.RESET_ALL}'.format(
-        dest=tcp[1],
-        src=tcp[0]
+        src=tcp[0],
+        dest=tcp[1]
     ))
     print(f'     Flags : {Fore.GREEN}{split_HL_flags[4:] + split_flags[0:]}{Style.RESET_ALL}')
     print(f'       URG : {Fore.GREEN}{urg}{Style.RESET_ALL}, ACK : {Fore.GREEN}{ack}{Style.RESET_ALL}, PSH : {Fore.GREEN}{psh}{Style.RESET_ALL}'
@@ -91,8 +91,8 @@ def getUDPHeader(udp):
     # print(f'     - Length\t\t\t: {Fore.GREEN}{udp[2]}{Style.RESET_ALL}')
     # print(f'     - Checksum\t\t\t: {Fore.GREEN}{hex(udp[3])}{Style.RESET_ALL}')
     print(f'     Src. Port : {Fore.GREEN}{src}{Style.RESET_ALL}, Dest. Port : {Fore.GREEN}{dest}{Style.RESET_ALL}'.format(
-        dest=udp[1],
-        src=udp[0]
+        src=udp[0],
+        dest=udp[1]
     ))
 
 def getICMPHeader(icmp):
