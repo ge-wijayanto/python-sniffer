@@ -189,7 +189,7 @@ def main():
             log.close()
         elif option == 'Y' or option == 'y':
             port = input(f'{Fore.GREEN}INPUT PORT FILTER : {Style.RESET_ALL}')
-            print(f'\n{Fore.CYAN}Starting Packet Sniffing Activity on PORT {Fore.GREEN}{port}{Fore.CYAN}...\n{Style.RESET_ALL}')
+            print(f'\n{Fore.CYAN}Starting Packet Sniffing Activity on {Fore.GREEN}PORT {port}{Fore.CYAN}...\n{Style.RESET_ALL}')
             print(f'[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t: {Fore.YELLOW}Use Keyboard Interrupt (CTRL + C) to End Activity{Style.RESET_ALL}\n')
             time.sleep(3)
             sniffPort(port)
