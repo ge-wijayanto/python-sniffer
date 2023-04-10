@@ -121,7 +121,7 @@ def getIPHeader(ip):
     print(f'     - Fragment Offset\t\t: {Fore.GREEN}{split_flags_fragment.bin[3:]} ({int(split_flags_fragment.bin[3:], 2)}){Style.RESET_ALL}')
     print(f'     - Time-to-Live (TTL)\t: {Fore.GREEN}{ip[5]}{Style.RESET_ALL}')
     print(f'     - Protocol\t\t\t: {Fore.GREEN}{ip[6]}{Style.RESET_ALL}')
-    print(f'     - Header Checksum\t\t: {Fore.GREEN}{ip[7]}{Style.RESET_ALL}')
+    print(f'     - Header Checksum\t\t: {Fore.GREEN}{hex(ip[7])}{Style.RESET_ALL}')
     print(f'     - Source IP\t\t: {Fore.GREEN}{socket.inet_ntoa(ip[8])}{Style.RESET_ALL}')
     print(f'     - Destination IP\t\t: {Fore.GREEN}{socket.inet_ntoa(ip[9])}{Style.RESET_ALL}')
 
@@ -146,7 +146,7 @@ def getTCPHeader(tcp):
     print(f'          - SYN\t\t\t: {Fore.GREEN}{split_flags.bin[6]}{Style.RESET_ALL}')
     print(f'          - FIN\t\t\t: {Fore.GREEN}{split_flags.bin[7]}{Style.RESET_ALL}')
     print(f'     - Window Size\t\t: {Fore.GREEN}{tcp[6]}{Style.RESET_ALL}')
-    print(f'     - Checksum\t\t\t: {Fore.GREEN}{tcp[7]}{Style.RESET_ALL}')
+    print(f'     - Checksum\t\t\t: {Fore.GREEN}{hex(tcp[7])}{Style.RESET_ALL}')
     print(f'     - Urgent Pointer\t\t: {Fore.GREEN}{tcp[8]}{Style.RESET_ALL}')
         
 def getUDPHeader(udp):
@@ -154,13 +154,13 @@ def getUDPHeader(udp):
     print(f'     - Source Port\t\t: {Fore.GREEN}{udp[0]}{Style.RESET_ALL}')
     print(f'     - Destination Port\t\t: {Fore.GREEN}{udp[1]}{Style.RESET_ALL}')
     print(f'     - Length\t\t\t: {Fore.GREEN}{udp[2]}{Style.RESET_ALL}')
-    print(f'     - Checksum\t\t\t: {Fore.GREEN}{udp[3]}{Style.RESET_ALL}')
+    print(f'     - Checksum\t\t\t: {Fore.GREEN}{hex(udp[3])}{Style.RESET_ALL}')
 
 def getICMPHeader(icmp):
     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}ICMP Header:{Style.RESET_ALL}')
     print(f'     - Type\t\t\t: {Fore.GREEN}{icmp[0]}{Style.RESET_ALL}')
     print(f'     - Code\t\t\t: {Fore.GREEN}{icmp[1]}{Style.RESET_ALL}')
-    print(f'     - Checksum\t\t\t: {Fore.GREEN}{icmp[2]}{Style.RESET_ALL}')
+    print(f'     - Checksum\t\t\t: {Fore.GREEN}{hex(icmp[2])}{Style.RESET_ALL}')
     print(f'     - Identifier\t\t: {Fore.GREEN}{icmp[3]}{Style.RESET_ALL}')
     print(f'     - Sequence Number\t\t: {Fore.GREEN}{icmp[4]}{Style.RESET_ALL}')
 
