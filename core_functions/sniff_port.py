@@ -75,7 +75,7 @@ def sniffStart(port):
                     getIPHeader(ip)
                     getTCPHeader(tcp)
                     getData(data)
-                    write_log.logger(eth, ip, tcp, filename, counter)
+                    write_log.logger(eth, ip, tcp, data, filename, counter)
                     
                     print('\nWriting to log...')
                     end = time.time()
@@ -86,7 +86,7 @@ def sniffStart(port):
                     getIPHeader(ip)
                     getUDPHeader(udp)
                     getData(data)
-                    write_log.logger(eth, ip, udp, filename, counter)
+                    write_log.logger(eth, ip, udp, data, filename, counter)
                     
                     print('\nWriting to log...')
                     end = time.time()
@@ -166,7 +166,7 @@ def getICMPHeader(icmp):
 
 def getData(data):
     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}Data:{Style.RESET_ALL}')
-    print(f'     - Data\t\t\t: {Fore.GREEN}{binascii.hexlify(data)}{Style.RESET_ALL}')
+    print(f'     - Data\t\t\t: {Fore.GREEN}{data}{Style.RESET_ALL}')
     
 def main():
     port = input(f'{Fore.GREEN}INPUT PORT FILTER : {Style.RESET_ALL}')
