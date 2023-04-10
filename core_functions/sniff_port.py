@@ -134,7 +134,7 @@ def getTCPHeader(tcp):
     print(f'     - Sequence Number\t\t: {Fore.GREEN}{tcp[2]}{Style.RESET_ALL}')
     print(f'     - Acknowledgement Number\t: {Fore.GREEN}{tcp[3]}{Style.RESET_ALL}')
     print(f'     - Header Length\t\t: {Fore.GREEN}{split_HL_flags.bin[:4]} ({int(split_HL_flags.bin[:4], 2)*4} bytes ({int(split_HL_flags.bin[:4], 2)})){Style.RESET_ALL}')
-    print(f'     - Flags\t\t\t: {Fore.GREEN}{int(str(split_HL_flags[4:] + split_flags[0:7]), 2)}{Style.RESET_ALL}')
+    print(f'     - Flags\t\t\t: {Fore.GREEN}{str(split_HL_flags[4:] + split_flags[0:7])}{Style.RESET_ALL}')
     print(f'          - Reserved\t\t: {Fore.GREEN}{split_HL_flags.bin[4:7]}{Style.RESET_ALL}')
     print(f'          - Accurate ECN\t: {Fore.GREEN}{split_HL_flags.bin[7]}{Style.RESET_ALL}')
     print(f'          - Congestion Window\t: {Fore.GREEN}{split_flags.bin[0]}{Style.RESET_ALL}')
