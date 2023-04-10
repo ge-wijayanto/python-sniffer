@@ -104,9 +104,9 @@ def getEthernetHeader(eth):
     print('---------------------------------------------------------------------')
     
     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}Ethernet Header:{Style.RESET_ALL}')
-    print(f'     - Destination MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[0]).decode("utf-8").upper()}{Style.RESET_ALL}')
-    print(f'     - Source MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[1]).decode("utf-8").upper()}{Style.RESET_ALL}')
-    print(f'     - Type/Length\t\t: {Fore.GREEN}{binascii.hexlify(eth[2])}{Style.RESET_ALL}')
+    print(f'     - Destination MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[0]).decode("utf-8")}{Style.RESET_ALL}')
+    print(f'     - Source MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[1]).decode("utf-8")}{Style.RESET_ALL}')
+    print(f'     - Type/Length\t\t: {Fore.GREEN}{binascii.hexlify(eth[2]).decode("utf-8")}{Style.RESET_ALL}')
     
 def getIPHeader(ip):
     split_version_IHL = BitArray(hex(ip[0]))
@@ -166,7 +166,7 @@ def getICMPHeader(icmp):
 
 def getData(data):
     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}Data:{Style.RESET_ALL}')
-    print(f'     - Data\t\t\t: {Fore.GREEN}{data}{Style.RESET_ALL}')
+    print(f'     - Data\t\t\t: {Fore.GREEN}{binascii.hexlify(data)}{Style.RESET_ALL}')
     
 def main():
     port = input(f'{Fore.GREEN}INPUT PORT FILTER : {Style.RESET_ALL}')
