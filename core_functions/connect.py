@@ -45,15 +45,15 @@ def main():
     
     if userInput == 'N' or userInput == 'n':
         print(f'\n{Fore.CYAN}Connecting to a Known Network...\n{Style.RESET_ALL}')
-        netname = input(f'{Fore.GREEN}Network Name\t: {Style.RESET_ALL}')
+        netname = input(f'{Fore.GREEN}Network Name\t\t: {Style.RESET_ALL}')
         connectToNetwork(netname,netname)
-        print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t: {Fore.YELLOW}If network is not recognized, try connecting with correct credentials{Style.RESET_ALL}')
+        print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t\t: {Fore.YELLOW}If network is not recognized, try connecting with correct credentials{Style.RESET_ALL}')
     elif userInput == 'Y' or userInput == 'y':
         print(f'\n{Fore.CYAN}Creating a New Network Profile...\n{Style.RESET_ALL}')
-        netname = input(f'{Fore.GREEN}Network Name\t: {Style.RESET_ALL}')
-        passkey = getpass.getpass(f'{Fore.GREEN}Password\t: {Style.RESET_ALL}')
+        netname = input(f'{Fore.GREEN}Network Name\t\t: {Style.RESET_ALL}')
+        passkey = getpass.getpass(f'{Fore.GREEN}Password\t\t: {Style.RESET_ALL}')
         createNewNetworkConn(netname,netname,passkey)
         connectToNetwork(netname,netname)
-        print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t: {Fore.YELLOW}If network is not recognized, try connecting with correct credentials{Style.RESET_ALL}')
+        print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t\t: {Fore.YELLOW}If network is not recognized, try connecting with correct credentials{Style.RESET_ALL}')
     else:
-        print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}Invalid Input!{Style.RESET_ALL}')
+        print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t: {Fore.RED}Invalid Input!{Style.RESET_ALL}')
