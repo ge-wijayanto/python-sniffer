@@ -117,7 +117,7 @@ def getIPHeader(ip):
     print(f'     - Type of Service (TOS)\t: {Fore.GREEN}{ip[1]}{Style.RESET_ALL}')
     print(f'     - Total Length\t\t: {Fore.GREEN}{ip[2]}{Style.RESET_ALL}')
     print(f'     - Identification\t\t: {Fore.GREEN}{ip[3]}{Style.RESET_ALL}')
-    print(f'     - Flags\t\t\t: {Fore.GREEN}{split_flags_fragment.bin[:3]} ({hex(split_flags_fragment.bin[:3], 2)}){Style.RESET_ALL}')
+    print(f'     - Flags\t\t\t: {Fore.GREEN}{split_flags_fragment.bin[:3]} ({hex(split_flags_fragment.bin[:3])}){Style.RESET_ALL}')
     print(f'     - Fragment Offset\t\t: {Fore.GREEN}{split_flags_fragment.bin[3:]} ({int(split_flags_fragment.bin[3:], 2)}){Style.RESET_ALL}')
     print(f'     - Time-to-Live (TTL)\t: {Fore.GREEN}{ip[5]}{Style.RESET_ALL}')
     print(f'     - Protocol\t\t\t: {Fore.GREEN}{ip[6]}{Style.RESET_ALL}')
