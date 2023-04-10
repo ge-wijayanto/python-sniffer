@@ -12,31 +12,7 @@ import additional_functions.write_log as write_log
 import additional_functions.stats_calculator as stats_calc
 import additional_functions.console_logger as console_log
 
-def initialize():
-    eth_header = captured_packet[0][0:14]
-    eth = struct.unpack('!6s6s2s', eth_header)
-
-    ip_header = captured_packet[0][14:34]
-    ip = struct.unpack('!BBHHHBBH4s4s', ip_header)
-    
-    if ip[6] == 6:
-        tcp_header = captured_packet[0][34:54]
-        tcp = struct.unpack('!HHLLBBHHH', tcp_header)
-        
-        data_content = captured_packet[0][54:]
-        data = struct.unpack('!%ds' % len(data_content), data_content)
-    elif ip[6] == 17:    
-        udp_header = captured_packet[0][34:42]
-        udp = struct.unpack('!HHHH', udp_header)
-        
-        data_content = captured_packet[0][42:]
-        data = struct.unpack('!%ds' % len(data_content), data_content)
-    elif ip[6] == 1:
-        icmp_header = captured_packet[0][34:42]
-        icmp = struct.unpack('!BBHHH', icmp_header)
-        
-        data_content = captured_packet[0][42:]
-        data = struct.unpack('!%ds' % len(data_content), data_content)
+# def initialize():
 
 def sniffAll():
     try:
@@ -57,7 +33,30 @@ def sniffAll():
                 memory = tracemalloc.start()
                 captured_packet = raw.recvfrom(65565)
                 
-                initialize()
+                eth_header = captured_packet[0][0:14]
+                eth = struct.unpack('!6s6s2s', eth_header)
+
+                ip_header = captured_packet[0][14:34]
+                ip = struct.unpack('!BBHHHBBH4s4s', ip_header)
+                
+                if ip[6] == 6:
+                    tcp_header = captured_packet[0][34:54]
+                    tcp = struct.unpack('!HHLLBBHHH', tcp_header)
+                    
+                    data_content = captured_packet[0][54:]
+                    data = struct.unpack('!%ds' % len(data_content), data_content)
+                elif ip[6] == 17:    
+                    udp_header = captured_packet[0][34:42]
+                    udp = struct.unpack('!HHHH', udp_header)
+                    
+                    data_content = captured_packet[0][42:]
+                    data = struct.unpack('!%ds' % len(data_content), data_content)
+                elif ip[6] == 1:
+                    icmp_header = captured_packet[0][34:42]
+                    icmp = struct.unpack('!BBHHH', icmp_header)
+                    
+                    data_content = captured_packet[0][42:]
+                    data = struct.unpack('!%ds' % len(data_content), data_content)
                 
                 ## Print
                 if ip[6] == 6:
@@ -120,7 +119,30 @@ def sniffPort(port):
                 memory = tracemalloc.start()
                 captured_packet = raw.recvfrom(65565)
                 
-                initialize()
+                eth_header = captured_packet[0][0:14]
+                eth = struct.unpack('!6s6s2s', eth_header)
+
+                ip_header = captured_packet[0][14:34]
+                ip = struct.unpack('!BBHHHBBH4s4s', ip_header)
+                
+                if ip[6] == 6:
+                    tcp_header = captured_packet[0][34:54]
+                    tcp = struct.unpack('!HHLLBBHHH', tcp_header)
+                    
+                    data_content = captured_packet[0][54:]
+                    data = struct.unpack('!%ds' % len(data_content), data_content)
+                elif ip[6] == 17:    
+                    udp_header = captured_packet[0][34:42]
+                    udp = struct.unpack('!HHHH', udp_header)
+                    
+                    data_content = captured_packet[0][42:]
+                    data = struct.unpack('!%ds' % len(data_content), data_content)
+                elif ip[6] == 1:
+                    icmp_header = captured_packet[0][34:42]
+                    icmp = struct.unpack('!BBHHH', icmp_header)
+                    
+                    data_content = captured_packet[0][42:]
+                    data = struct.unpack('!%ds' % len(data_content), data_content)
                 
                 ## Print
                 if ip[6] == 6 and (tcp[0] == int(port) or tcp[1] == int(port)):
@@ -163,18 +185,18 @@ def main():
         
         if option == 'N' or option == 'n':
             print(f'\n{Fore.CYAN}Starting Packet Sniffing Activity on ALL PORT...\n{Style.RESET_ALL}')
-            print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t: {Fore.YELLOW}Use Keyboard Interrupt (CTRL + C) to End Activity{Style.RESET_ALL}')
+            print(f'[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t: {Fore.YELLOW}Use Keyboard Interrupt (CTRL + C) to End Activity{Style.RESET_ALL}\n')
             time.sleep(3)
             sniffAll()
             log.close()
         elif option == 'Y' or option == 'y':
             port = input(f'{Fore.GREEN}INPUT PORT FILTER : {Style.RESET_ALL}')
             print(f'\n{Fore.CYAN}Starting Packet Sniffing Activity on PORT {Fore.GREEN}{port}{Fore.CYAN}...\n{Style.RESET_ALL}')
-            print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t: {Fore.YELLOW}Use Keyboard Interrupt (CTRL + C) to End Activity{Style.RESET_ALL}')
+            print(f'[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t: {Fore.YELLOW}Use Keyboard Interrupt (CTRL + C) to End Activity{Style.RESET_ALL}\n')
             time.sleep(3)
             sniffPort(port)
             log.close()
         else:
-            print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t\t: {Fore.RED}Invalid Input!{Style.RESET_ALL}')
+            print(f'[{Fore.RED}!{Style.RESET_ALL}] ERROR\t: {Fore.RED}Invalid Input!{Style.RESET_ALL}')
     
     log.close()
