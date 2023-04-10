@@ -64,7 +64,7 @@ def sniffAll():
                     # console_log.getData(data)
                     write_log.logger(eth, ip, tcp, data, filename, counter)
                     
-                    print(f'\n{Fore.CYAN}Writing... \nCheck Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
+                    print(f'\nWriting to log file...\n{Fore.CYAN}Check Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
                     end = time.time()
                     stats_calc.calculateStats(start, end, memory, counter)
                     counter += 1
@@ -75,7 +75,7 @@ def sniffAll():
                     # console_log.getData(data)
                     write_log.logger(eth, ip, udp, data, filename, counter)
                     
-                    print(f'\n{Fore.CYAN}Writing... \nCheck Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
+                    print(f'\nWriting to log file...\n{Fore.CYAN}Check Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
                     end = time.time()
                     stats_calc.calculateStats(start, end, memory, counter)
                     counter += 1
@@ -86,7 +86,7 @@ def sniffAll():
                     # console_log.getData(data)
                     write_log.logger(eth, ip, icmp, data, filename, counter)
                     
-                    print(f'\n{Fore.CYAN}Writing... \nCheck Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
+                    print(f'\nWriting to log file...\n{Fore.CYAN}Check Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
                     end = time.time()
                     stats_calc.calculateStats(start, end, memory, counter)
                     counter += 1
@@ -150,7 +150,7 @@ def sniffPort(port):
                     # console_log.getData(data)
                     write_log.logger(eth, ip, tcp, data, filename, counter)
                     
-                    print(f'\n{Fore.CYAN}Writing... \nCheck Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
+                    print(f'\nWriting to log file...\n{Fore.CYAN}Check Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
                     end = time.time()
                     stats_calc.calculateStats(start, end, memory, counter)
                     counter += 1
@@ -161,7 +161,7 @@ def sniffPort(port):
                     # console_log.getData(data)
                     write_log.logger(eth, ip, udp, data, filename, counter)
                     
-                    print(f'\n{Fore.CYAN}Writing... \nCheck Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
+                    print(f'\nWriting to log file...\n{Fore.CYAN}Check Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
                     end = time.time()
                     stats_calc.calculateStats(start, end, memory, counter)
                     counter += 1
