@@ -104,9 +104,9 @@ def getEthernetHeader(eth):
     print('---------------------------------------------------------------------')
     
     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}Ethernet Header:{Style.RESET_ALL}')
-    print(f'     - Destination MAC\t\t: {Fore.GREEN}{hex(eth[0]).decode("utf-8").upper()}{Style.RESET_ALL}')
-    print(f'     - Source MAC\t\t: {Fore.GREEN}{hex(eth[1]).decode("utf-8").upper()}{Style.RESET_ALL}')
-    print(f'     - Type/Length\t\t: {Fore.GREEN}{hex(eth[2]).decode("utf-8")}{Style.RESET_ALL}')
+    print(f'     - Destination MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[0]).decode("utf-8").upper()}{Style.RESET_ALL}')
+    print(f'     - Source MAC\t\t: {Fore.GREEN}{binascii.hexlify(eth[1]).decode("utf-8").upper()}{Style.RESET_ALL}')
+    print(f'     - Type/Length\t\t: {Fore.GREEN}{binascii.hexlify(eth[2])}{Style.RESET_ALL}')
     
 def getIPHeader(ip):
     split_version_IHL = BitArray(hex(ip[0]))
