@@ -45,7 +45,7 @@ def main():
     
     if userInput == 'N' or userInput == 'n':
         print(f'\n{Fore.CYAN}Connecting to a Known Network...\n{Style.RESET_ALL}')
-        netname = input(f'{Fore.Green}Network Name\t: {Style.RESET_ALL}')
+        netname = input(f'{Fore.GREEN}Network Name\t: {Style.RESET_ALL}')
         connectToNetwork(netname,netname)
         print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t: {Fore.YELLOW}If network is not recognized, try connecting with correct credentials{Style.RESET_ALL}')
     elif userInput == 'Y' or userInput == 'y':
