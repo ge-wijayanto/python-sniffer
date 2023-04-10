@@ -41,7 +41,7 @@ def connectToNetwork(name, SSID):
     subprocess.call(cmd, shell=True)
 
 def main():
-    userInput = input(f'{Fore.GREEN}NEW NETWORK (Y/N) : {Style.RESET_ALL}')
+    userInput = input(f'{Fore.GREEN}NEW NETWORK? (Y/N) : {Style.RESET_ALL}')
     
     if userInput == 'N' or userInput == 'n':
         print(f'\n{Fore.CYAN}Connecting to a Known Network...\n{Style.RESET_ALL}')
