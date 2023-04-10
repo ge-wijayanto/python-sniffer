@@ -11,6 +11,7 @@ cmd_parser.add_argument('-nS', '--netscan', action='store_true', help='Scan for 
 cmd_parser.add_argument('-c', '--connect', action='store_true', help='Connect to a network')
 cmd_parser.add_argument('-sA', '--sniff_all', action='store_true', help='Start packet sniffing on network (All Packets)')
 cmd_parser.add_argument('-sP', '--sniff_port', action='store_true', help='Start packet sniffing on a specific application port')
+cmd_parser.add_argument('-s', '--sniff', action='store_true', help='Start packet sniffing function')
 
 args = vars(cmd_parser.parse_args())
 
@@ -25,4 +26,7 @@ elif args['sniff_all']:
     exit(0)
 elif args['sniff_port']:
     sniff_port.main()
+    exit(0)
+elif args['sniff']:
+    sniff_func.main()
     exit(0)
