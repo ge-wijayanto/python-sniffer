@@ -54,7 +54,3 @@ def getICMPHeader(icmp):
     print(f'     - Type\t\t: {Fore.GREEN}{icmp[0]}{Style.RESET_ALL}')
     print(f'     - Code\t\t: {Fore.GREEN}{icmp[1]}{Style.RESET_ALL}')
     print(f'     - Identifier\t: {Fore.GREEN}{icmp[3]}{Style.RESET_ALL}')
-
-# def getData(data):
-#     print(f'[{Fore.CYAN}!{Style.RESET_ALL}] {Fore.CYAN}Data:{Style.RESET_ALL}')
-#     print(f'     - Data\t\t\t: {Fore.GREEN}{data}{Style.RESET_ALL}')

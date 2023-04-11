@@ -6,7 +6,6 @@ import subprocess
 import time
 import tracemalloc
 from colorama import Style, Fore, Back
-from bitstring import BitArray
 
 import additional_functions.write_log as write_log
 import additional_functions.stats_calculator as stats_calc
@@ -61,7 +60,6 @@ def sniffAll():
                     console_log.getEthernetHeader(eth)
                     console_log.getIPHeader(ip)
                     console_log.getTCPHeader(tcp)
-                    # console_log.getData(data)
                     write_log.logger(eth, ip, tcp, data, filename, counter)
                     
                     print(f'\nWriting to log file...\n{Fore.CYAN}Check Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
@@ -72,7 +70,6 @@ def sniffAll():
                     console_log.getEthernetHeader(eth)
                     console_log.getIPHeader(ip)
                     console_log.getUDPHeader(udp)
-                    # console_log.getData(data)
                     write_log.logger(eth, ip, udp, data, filename, counter)
                     
                     print(f'\nWriting to log file...\n{Fore.CYAN}Check Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
@@ -83,7 +80,6 @@ def sniffAll():
                     console_log.getEthernetHeader(eth)
                     console_log.getIPHeader(ip)
                     console_log.getICMPHeader(icmp)
-                    # console_log.getData(data)
                     write_log.logger(eth, ip, icmp, data, filename, counter)
                     
                     print(f'\nWriting to log file...\n{Fore.CYAN}Check Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
@@ -147,7 +143,6 @@ def sniffPort(port):
                     console_log.getEthernetHeader(eth)
                     console_log.getIPHeader(ip)
                     console_log.getTCPHeader(tcp)
-                    # console_log.getData(data)
                     write_log.logger(eth, ip, tcp, data, filename, counter)
                     
                     print(f'\nWriting to log file...\n{Fore.CYAN}Check Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
@@ -158,7 +153,6 @@ def sniffPort(port):
                     console_log.getEthernetHeader(eth)
                     console_log.getIPHeader(ip)
                     console_log.getUDPHeader(udp)
-                    # console_log.getData(data)
                     write_log.logger(eth, ip, udp, data, filename, counter)
                     
                     print(f'\nWriting to log file...\n{Fore.CYAN}Check Log for a More Detailed Captured Header Fields Information{Style.RESET_ALL}')
