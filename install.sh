@@ -18,3 +18,7 @@ sudo pip install colorama
 sudo pip install bitstring
 sudo pip install sockets
 sudo pip install argparse
+
+# Create Log Files Directory
+sudo mkdir log_files/
+chmod 777 log_files/
