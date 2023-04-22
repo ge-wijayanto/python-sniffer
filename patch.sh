@@ -33,3 +33,79 @@ echo -e "The script will now proceed to patch the firmware of your WiFi Chipset.
 echo -e "If you haven't edited this script as mentioned in ${YELLOW}WARNING POINT 5${NC}, please do so first."
 echo -e "If you have, Press ${GREEN}ENTER${NC} to continue..."
 read -p ""
+
+# Exclude the following Firmware Packages from being updated
+sudo apt-mark hold firmware-brcm80211
+sudo apt-mark hold firmware-realtek
+sudo apt-mark hold firmware-atheros
+sudo apt-mark hold firmware-libertas
+
+# Update the system
+yes | sudo apt update && sudo apt upgrade
+
+# Install dependencies
+yes | sudo apt install raspberrypi-kernel-headers git libgmp3-dev gawk qpdf bison flex make autoconf libtool texinfo
+
+# Clone the Nexmon repository
+git clone https://github.com/seemoo-lab/nexmon.git
+
+# Change directory to Nexmon
+cd nexmon
+
+# Use root privileges
+sudo su
+
+# Compile libisl.so.10
+# cd /<path_to_dir>/nexmon/buildtools/isl-0.10
+cd /home/ge-wijayanto/nexmon/buildtools/isl-0.10 
+autoreconf -f -i
+./configure
+make
+make install
+ln -s /usr/local/lib/libisl.so /usr/lib/arm-linux-gnueabihf/libisl.so.10
+stat /usr/lib/arm-linux-gnueabihf/libisl.so.10
+
+# Compile libmpfr.so.4
+# cd /<path_to_dir>/nexmon/buildtools/mpfr-3.1.4
+cd /home/ge-wijayanto/nexmon/buildtools/mpfr-3.1.4
+autoreconf -f -i
+./configure
+make
+make install
+ln -s /usr/local/lib/libmpfr.so /usr/lib/arm-linux-gnueabihf/libmpfr.so.4
+stat /usr/lib/arm-linux-gnueabihf/libmpfr.so.4
+
+# Install patches
+# cd /<path_to_dir>/nexmon/
+cd /home/ge-wijayanto/nexmon/
+source setup_env.sh
+make
+
+# Patch the firmware
+# cd /<path_to_dir>/nexmon/patches/<wifi_chipset_model>/<firmware_version>/nexmon/
+cd /home/ge-wijayanto/nexmon/patches/bcm43455c0/7_45_206/nexmon/
+make
+make backup-firmware
+make install-firmware
+
+# Install Nexutil
+# cd /<path_to_dir>/nexmon/utilities/nexutil/
+cd /home/ge-wijayanto/nexmon/utilities/nexutil/
+make
+make install
+
+# Load the patched firmware
+modinfo brcmfmac
+# mv /lib/modules/<kernel_version>/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko /lib/modules/<kernel_version>/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.orig
+mv /lib/modules/5.10.103-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko /lib/modules/5.10.103-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.orig
+# cp /<path_to_dir>/nexmon/patches/driver/brcmfmac_<kernel_version>-nexmon/brcmfmac.ko /lib/modules/<kernel_version>/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+cp /home/ge-wijayanto/nexmon/patches/driver/brcmfmac_5.10.y-nexmon/brcmfmac.ko /lib/modules/5.10.103-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+depmod -a
+
+# Reboot the system
+echo -e "The patching process is complete, The system will now reboot."
+echo -e "After rebooting, you can check if the patch succeeded by checking if the '${CYAN}monitor${NC}' capability is listed." 
+echo -e "Use the following command: ${GREEN}iw list${NC}"
+echo -e "Press ${GREEN}ENTER${NC} to continue..."
+read -p ""
+sudo reboot
