@@ -29,4 +29,5 @@ echo -e "Nexmon's GitHub Repository: ${GREEN}https://github.com/seemoo-lab/nexmo
 
 echo -e "The script will now proceed to patch the firmware of your WiFi Chipset..."
 echo -e "If you haven't edited this script as mentioned in ${YELLOW}WARNING POINT 5${NC}, please do so first."
-read -p -e "If you have Press ${GREEN}ENTER${NC} to continue..."
+echo -e "If you have, Press ${GREEN}ENTER${NC} to continue..."
+read -p ""
