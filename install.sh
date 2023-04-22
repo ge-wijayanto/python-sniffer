@@ -21,4 +21,4 @@ sudo pip install argparse
 
 # Create Log Files Directory
 sudo mkdir log_files/
-chmod 777 log_files/
+sudo chmod 777 log_files/
