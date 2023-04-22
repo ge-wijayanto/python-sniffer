@@ -94,6 +94,10 @@ cd /home/ge-wijayanto/nexmon/utilities/nexutil/
 make
 make install
 
+# Disable power saving features (to prevent firmware from crashing)
+# iw dev <interface> set power_save off
+iw dev wlan0 set power_save off
+
 # Load the patched firmware
 modinfo brcmfmac
 # mv /lib/modules/<kernel_version>/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko /lib/modules/<kernel_version>/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.orig
