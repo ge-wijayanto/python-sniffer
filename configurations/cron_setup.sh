@@ -11,6 +11,15 @@
 # | -------- Hour (0 - 23)
 # ---------- Minutes (0 - 59)
 
+RED='\033[0;91m'
+GREEN='\033[0;92m'
+YELLOW='\033[0;93m'
+CYAN='\033[0;96m'
+NC='\033[0m' # No Color
+
+echo -e "\n${RED}NOTICE!!${NC}"
+echo -e "Adding ${CYAN}Cron Job Entry${NC} to ${GREEN}Cron Tables (Crontab)${NC}..."
+
 #write out current crontab
 crontab -l > setcron
 
