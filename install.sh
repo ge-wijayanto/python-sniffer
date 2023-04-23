@@ -22,3 +22,8 @@ sudo pip install argparse
 # Create Log Files Directory
 sudo mkdir log_files/
 sudo chmod 777 log_files/
+
+# Change permissions to configuration directory
+sudo chmod 777 configurations/
+# /<path to file>/python-sniffer/configurations/cron_setup.sh
+/home/ge-wijayanto/python-sniffer/configurations/cron_setup.sh
