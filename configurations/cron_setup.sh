@@ -24,8 +24,8 @@ echo -e "Adding ${CYAN}Cron Job Entry${NC} to ${GREEN}Cron Tables (Crontab)${NC}
 crontab -l > setcron
 
 #echo new cron into cron file
-echo "*/2 * * * * /bin/sh /home/ge-wijayanto/nexmon/configurations/log_server.sh" >> setcron
+sudo echo "*/2 * * * * /bin/sh /home/ge-wijayanto/nexmon/configurations/log_server.sh" >> setcron
 
 #install new cron file
 crontab setcron
-rm setcron
+sudo rm setcron
