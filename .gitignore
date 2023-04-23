@@ -4,6 +4,8 @@
 __pycache__/
 log_files/
 configurations/ssh.key
+get-pip.py
+get-pip.py.1
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
