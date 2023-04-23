@@ -3,6 +3,7 @@
 
 __pycache__/
 log_files/
+configurations/ssh.key
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
