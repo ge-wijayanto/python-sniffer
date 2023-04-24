@@ -8,6 +8,8 @@ NC='\033[0m' # No Color
 
 echo -e "\n${RED}NOTICE!!${NC}"
 echo -e "If your Raspberry Pi doesn't support ${CYAN}Monitor Mode${NC}, please run ${GREEN}patch.sh${NC} first!!"
+echo -e "${CYAN}Default permission${NC} for required folders and files are set to ${RED}777${NC}."
+echo -e "Edit the ${GREEN}install.sh${NC} file (or manually) to change the ${YELLOW}permission${NC} according to your needs"
 echo -e "Press ${GREEN}ENTER${NC} to continue..."
 read -p ""
 
@@ -34,12 +36,12 @@ yes | sudo pip install argparse
 
 # Create Log Files Directory
 sudo mkdir log_files/
-sudo chmod 700 log_files/
+sudo chmod 777 log_files/
 
 # Change permissions to configuration directory
-sudo chmod 700 configurations/
-sudo chmod 700 configurations/log_server.sh
-sudo chmod 700 configurations/cron_setup.sh
+sudo chmod 777 configurations/
+sudo chmod 777 configurations/log_server.sh
+sudo chmod 777 configurations/cron_setup.sh
 # /<path to file>/python-sniffer/configurations/cron_setup.sh
 /home/ge-wijayanto/python-sniffer/configurations/cron_setup.sh
 
