@@ -25,5 +25,7 @@ sudo chmod 777 log_files/
 
 # Change permissions to configuration directory
 sudo chmod 777 configurations/
+sudo chmod 777 configurations/log_server.sh
+sudo chmod 777 configurations/cron_setup.sh
 # /<path to file>/python-sniffer/configurations/cron_setup.sh
 /home/ge-wijayanto/python-sniffer/configurations/cron_setup.sh
