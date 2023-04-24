@@ -14,8 +14,3 @@ echo -e "Sending ${CYAN}log files${NC} to ${GREEN}Log Server${NC}..."
 scp -i /home/ge-wijayanto/python-sniffer/configurations/ssh.key -o StrictHostKeyChecking=no /home/ge-wijayanto/python-sniffer/log_files/* ge-wijayanto@log-server.duckdns.org:/home/ge-wijayanto/log_files/
 
 echo -e "${CYAN}Log files${NC} have been sent to ${GREEN}Log Server${NC}.\n"
-
-# Delete log files
-echo -e "Deleting ${CYAN}log files${NC}..."
-# sudo rm -rf /path/to/log/files/*
-sudo rm /home/ge-wijayanto/python-sniffer/log_files/*

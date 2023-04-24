@@ -42,6 +42,7 @@ sudo chmod 777 log_files/
 sudo chmod 777 configurations/
 sudo chmod 777 configurations/log_handler.sh
 sudo chmod 777 configurations/cron_setup.sh
+sudo chmod 777 configurations/clear_log.sh
 # /<path to file>/python-sniffer/configurations/cron_setup.sh
 /home/ge-wijayanto/python-sniffer/configurations/cron_setup.sh
 
