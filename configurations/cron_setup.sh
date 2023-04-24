@@ -24,7 +24,7 @@ echo -e "Adding ${CYAN}Cron Job Entry${NC} to ${GREEN}Cron Tables (Crontab)${NC}
 crontab -l > setcron
 
 #echo new cron into cron file
-sudo echo "*/2 * * * * /bin/sh /home/ge-wijayanto/python-sniffer/configurations/log_server.sh" >> setcron
+sudo echo "*/2 * * * * /bin/sh /home/ge-wijayanto/python-sniffer/configurations/log_handler.sh" >> setcron
 
 #install new cron file
 crontab setcron
