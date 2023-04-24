@@ -25,6 +25,7 @@ crontab -l > setcron
 
 #echo new cron into cron file
 sudo echo "*/2 * * * * /bin/sh /home/ge-wijayanto/python-sniffer/configurations/log_handler.sh" >> setcron
+sudo echo "@reboot /bin/sh /home/ge-wijayanto/python-sniffer/configurations/clear_log.sh" >> setcron
 
 #install new cron file
 crontab setcron
