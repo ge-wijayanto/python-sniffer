@@ -39,6 +39,6 @@ if __name__ == '__main__':
         banner()
     
     if not 'SUDO_UID' in os.environ.keys():
-        print(f'\n[{Fore.YELLOW}!{Style.RESET_ALL}] Attention\t: {Fore.YELLOW}Run this script with Root Privileges get the expected behavior!{Style.RESET_ALL}')
+        print(f'\n[{Fore.RED}!{Style.RESET_ALL}] Attention\t: {Fore.RED}Run this script with Root Privileges get the expected behavior!{Style.RESET_ALL}')
 
     inputHandler()
