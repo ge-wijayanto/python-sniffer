@@ -10,8 +10,7 @@ Packet Sniffer merupakan sebuah alat (baik software maupun hardware) yang dapat 
 
 Pada penelitian ini, Packet Sniffer dikembangkan menggunakan bahasa Python, khususnya untuk domain socket programming, dengan utilitas berikut:
 * Available Network Scanning
-* Network Connection/Profile Configuration
-* Network Connection Establishment
+* Network Connection/Profile Configuration - Establishment
 * Main Packet Sniffing Function
 * Packet Sniffing Result Parsing
 * Packet Capture Dumping
@@ -36,7 +35,11 @@ Untuk mempermudah navigasi repositori, gunakan button berikut:
 
 
 ## Program Design
-((To-do: Insert Flowchart dan Program di sini))
+### Flowchart
+![Flowchart](img/Flowchart.png)
+### Topologi
+![Topologi](img/Topologi.png)
+
 
 ## Installation
 ```sh
@@ -46,10 +49,12 @@ chmod +x install.sh
 ./install.sh
 ```
 
+
 ## Usage Guide
 ```
 To-do: Insert cara penggunaan program di sini
 ```
+
 
 ## Demo
 ((To-do: Insert video demonstrasi di sini))
