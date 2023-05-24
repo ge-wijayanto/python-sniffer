@@ -2,18 +2,19 @@
 ### Author: Gregorius Evangelist W. / 140810190040
 
 
-Repositori ini berisi program dan dokumentasi Packet Sniffer yang dikembangkan menggunakan bahasa Python dan ditujukan untuk digunakan pada Raspberry Pi. Diajukan oleh penulis sebagai penelitian Tugas Akhir di Teknik Informatika Unpad.
+This repository contains a Packet Sniffer program and documentation developed using the Python language and intended for use on Raspberry Pi. Submitted by the author as a research project for the Final Project in Computer Science at Universitas Padjadjaran.
 
 
 ## Description
-Packet Sniffer merupakan sebuah alat (baik software maupun hardware) yang dapat digunakan untuk menangkap network packet, dalam sebuah proses yang dikenal sebagai packet capture. Penggunaan Packet Sniffer umumnya akan mengungkap packet header dan berbagai informasi lainnya yang dapat digunakan untuk mengetahui sebuah perilaku atau konfigurasi jaringan. Informasi tersebut sangat berharga untuk digunakan baik pada proses monitoring jarigan, pengujian keamanan, maupun serangan keamanan yang sesungguhnya.
+A Packet Sniffer is a tool (either software or hardware) that can be used to capture network packets in a process known as packet capture. The use of a Packet Sniffer typically reveals packet headers and various other information that can be used to understand network behavior or configuration. This information is valuable for tasks such as network monitoring, security testing, and actual security attacks.
 
-Pada penelitian ini, Packet Sniffer dikembangkan menggunakan bahasa Python, khususnya untuk domain socket programming, dengan utilitas berikut:
+In this research, the Packet Sniffer is developed using the Python language, specifically for socket programming domain, with the following utilities:
 * Available Network Scanning
 * Network Connection/Profile Configuration - Establishment
 * Main Packet Sniffing Function
 * Packet Sniffing Result Parsing
 * Packet Capture Dumping
+* Sending Log Files to a Remote Server
 
 
 ## Documentation Section
@@ -52,9 +53,48 @@ chmod +x install.sh
 
 ## Usage Guide
 ```
-To-do: Insert cara penggunaan program di sini
+# Start Main Console
+sudo python3 py-sniff.py
+
+usage: runprog.py [-h] [-nS] [-c] [-s]
+
+py-sniff - A Python Packet Sniffer
+
+optional arguments:
+  -h, --help      show this help message and exit
+  -nS, --netscan  Scan for available networks
+  -c, --connect   Connect to a network
+  -s, --sniff     Start packet sniffing function
+
+########### USAGE EXAMPLE ###########
+
+# Step 1: Run Main Console Program in Console
+$ sudo python3 py-sniff.py
+
+# Step 2: Input the Desired Commands in Main Console Prompt
+## Network Scan
+py-sniff > -nS  # or --netscan
+
+## Connect to a Network
+py-sniff > -c   # or --connect
+
+## Start Packet Sniffing
+py-sniff > -s   # or --sniff
 ```
 
 
 ## Demo
-((To-do: Insert video demonstrasi di sini))
+### Installation Process
+Installation Video
+### Main Console
+Main Console Video
+### Available Network Scanning & Establishing Connection
+Network Scanning & Establish Connection Video
+### Sniff All Network Traffic
+Sniff All Traffic Video
+### Sniff Specific Network Port
+Sniff by Port Video
+### Send Log, Clear Log, & Add Cron Job Scripts
+Configurations Video
+### Check Log Existence in Remote Server
+Remote Server Video
