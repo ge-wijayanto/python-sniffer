@@ -18,7 +18,7 @@ In this research, the Packet Sniffer is developed using the Python language, spe
 
 
 ## Documentation Section
-Untuk mempermudah navigasi repositori, gunakan button berikut:
+To simplify repository navigations, use these buttons:
 <p>
     <a style="margin-right: 15px;" href="https://github.com/ge-wijayanto/python-sniffer#program-design">
         <img src="https://images-ext-2.discordapp.net/external/_vwOEpICdyxopjRrRwKZbtIV4Rln0b1WWrlYzh83GaI/%3Ft%3DDESIGN%26f%3DUbuntu-Bold%26ts%3D18%26tc%3Dfff%26hp%3D10%26vp%3D12%26w%3D105%26h%3D40%26c%3D12%26bgt%3Dunicolored%26bgc%3D45d27e%26be%3D1/https/dabuttonfactory.com/button.png">
@@ -38,7 +38,7 @@ Untuk mempermudah navigasi repositori, gunakan button berikut:
 ## Program Design
 ### Flowchart
 ![Flowchart](img/Flowchart.png)
-### Topologi
+### Topology
 ![Topologi](img/Topologi.png)
 
 
