@@ -53,58 +53,58 @@ git clone https://github.com/seemoo-lab/nexmon.git
 cd nexmon
 
 # Use root privileges
-sudo su
+# sudo su
 
 # Compile libisl.so.10
 # cd /<path_to_dir>/nexmon/buildtools/isl-0.10
 cd /home/ge-wijayanto/nexmon/buildtools/isl-0.10 
-autoreconf -f -i
-./configure
-make
-make install
-ln -s /usr/local/lib/libisl.so /usr/lib/arm-linux-gnueabihf/libisl.so.10
-stat /usr/lib/arm-linux-gnueabihf/libisl.so.10
+sudo autoreconf -f -i
+sudo ./configure
+sudo make
+sudo make install
+sudo ln -s /usr/local/lib/libisl.so /usr/lib/arm-linux-gnueabihf/libisl.so.10
+sudo stat /usr/lib/arm-linux-gnueabihf/libisl.so.10
 
 # Compile libmpfr.so.4
 # cd /<path_to_dir>/nexmon/buildtools/mpfr-3.1.4
 cd /home/ge-wijayanto/nexmon/buildtools/mpfr-3.1.4
-autoreconf -f -i
-./configure
-make
-make install
-ln -s /usr/local/lib/libmpfr.so /usr/lib/arm-linux-gnueabihf/libmpfr.so.4
-stat /usr/lib/arm-linux-gnueabihf/libmpfr.so.4
+sudo autoreconf -f -i
+sudo ./configure
+sudo make
+sudo make install
+sudo ln -s /usr/local/lib/libmpfr.so /usr/lib/arm-linux-gnueabihf/libmpfr.so.4
+sudo stat /usr/lib/arm-linux-gnueabihf/libmpfr.so.4
 
 # Install patches
 # cd /<path_to_dir>/nexmon/
 cd /home/ge-wijayanto/nexmon/
-source setup_env.sh
-make
+sudo source setup_env.sh
+sudo make
 
 # Patch the firmware
 # cd /<path_to_dir>/nexmon/patches/<wifi_chipset_model>/<firmware_version>/nexmon/
 cd /home/ge-wijayanto/nexmon/patches/bcm43455c0/7_45_206/nexmon/
-make
-make backup-firmware
-make install-firmware
+sudo make
+sudo make backup-firmware
+sudo make install-firmware
 
 # Install Nexutil
 # cd /<path_to_dir>/nexmon/utilities/nexutil/
 cd /home/ge-wijayanto/nexmon/utilities/nexutil/
-make
-make install
+sudo make
+sudo make install
 
 # Disable power saving features (to prevent firmware from crashing)
 # iw dev <interface> set power_save off
-iw dev wlan0 set power_save off
+sudo iw dev wlan0 set power_save off
 
 # Load the patched firmware
-modinfo brcmfmac
+sudo modinfo brcmfmac
 # mv /lib/modules/<kernel_version>/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko /lib/modules/<kernel_version>/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.orig
-mv /lib/modules/5.10.103-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko /lib/modules/5.10.103-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.orig
+sudo mv /lib/modules/5.10.103-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko /lib/modules/5.10.103-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.orig
 # cp /<path_to_dir>/nexmon/patches/driver/brcmfmac_<kernel_version>-nexmon/brcmfmac.ko /lib/modules/<kernel_version>/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
-cp /home/ge-wijayanto/nexmon/patches/driver/brcmfmac_5.10.y-nexmon/brcmfmac.ko /lib/modules/5.10.103-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
-depmod -a
+sudo cp /home/ge-wijayanto/nexmon/patches/driver/brcmfmac_5.10.y-nexmon/brcmfmac.ko /lib/modules/5.10.103-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+sudo depmod -a
 
 # Reboot the system
 echo -e "The patching process is complete, The system will now reboot."
