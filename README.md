@@ -37,7 +37,7 @@ To simplify repository navigations, use these buttons:
 
 ## Program Design
 ### Flowchart
-![Flowchart](img/Flowchart.png)
+![Flowchart](img/FlowchartEnglish.png)
 ### Topology
 ![Topologi](img/Topologi.png)
 
