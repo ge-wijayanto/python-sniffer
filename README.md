@@ -1,5 +1,5 @@
 # Python Packet Sniffer
-### Author: Gregorius Evangelist W. / 140810190040
+### Author: Gregorius Evangelist W.
 
 
 This repository contains a Packet Sniffer program and documentation developed using the Python language and intended for use on Raspberry Pi. Submitted by the author as a research project for the Final Project in Computer Science at Universitas Padjadjaran.
